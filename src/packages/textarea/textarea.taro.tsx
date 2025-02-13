@@ -10,7 +10,7 @@ import {
 } from '@tarojs/components'
 import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface TextAreaProps
   extends Omit<TextareaProps, 'showCount' | 'onFocus' | 'onBlur'>,

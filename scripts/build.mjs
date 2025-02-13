@@ -39,6 +39,7 @@ async function buildES(p) {
     [
       'src/packages/**/*.{ts,tsx}',
       'src/utils/**/*.{ts,tsx}',
+      'src/hooks/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
@@ -64,6 +65,7 @@ async function buildES(p) {
           '@/packages/*': ['src/packages/*'],
           '@/utils/*': ['src/utils/*'],
           '@/utils': ['src/utils'],
+          '@/hooks/*': ['src/hooks/*'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,

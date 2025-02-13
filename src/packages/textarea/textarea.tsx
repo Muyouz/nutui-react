@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { useConfig, useRtl } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { usePropsValue } from '@/utils/use-props-value'
+import { usePropsValue } from '@/hooks/use-props-value'
 
 export interface TextAreaProps extends BasicComponent {
   value: string
