@@ -295,6 +295,7 @@ async function buildThemeCSS() {
   })
 
   await vite.build({
+    configFile: false,
     logLevel: 'error',
     resolve: {
       alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],

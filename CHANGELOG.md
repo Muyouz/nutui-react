@@ -1,3 +1,20 @@
+# v3.0.8
+
+`2025-04-11`
+
+- :sparkles: feat(v15): swipe 增加 v15 的 demo (#3160)
+- :sparkles: feat(dialog): 添加变量处理 (#3172)
+- :bug: fix(sidebar): scroll animation not working with sidebarDuration prop (#3169)
+- :bug: fix(switch): 异步操作中抛错可中断 loading 态 (#3143)
+- :bug: fix: jmapp demo build (#3146)
+- :bug: fix(image): 组件内部的style处理覆盖传入的className (#3165)
+- :bug: fix(cascader): 选中后 tab 应展示 text 字段的值 (#3167)
+- :bug: fix: codesandbox displays abnormal (#3159)
+- :bug: fix(docs): 修复 markdown 无法正确编译注释 (#3158)
+- :bug: fix(skeleton): 废弃inline 导致的警告问题修复 (#3154)
+- 🏡 chore: 增加 useHtmlComponents 模式 (#3156)
+- 📖 docs: 补充快速上手和主题中的配置项的解释 (#3163)
+
 # v3.0.7
 
 `2025-04-03`
