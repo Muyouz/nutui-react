@@ -32,9 +32,7 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ...props,
   }
   const classPrefix = 'nut-switch'
-
   const rtl = useRtl()
-
   const [value, setValue] = usePropsValue<boolean>({
     value: checked,
     defaultValue: defaultChecked,
@@ -58,11 +56,15 @@ export const Switch: FunctionComponent<Partial<TaroSwitchProps>> = (props) => {
     ])
   }
 
-  const onClick = () => {
+  const onClick = async () => {
     if (disabled || changing) return
     if (onChange) {
       setChanging(true)
-      onChange(!value)
+      try {
+        await onChange(!value)
+      } catch (e) {
+        setChanging(false)
+      }
     }
     setValue(!value)
   }
