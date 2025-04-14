@@ -178,10 +178,15 @@ async function buildDeclaration() {
     `${dist}/types/src/packages/**/context.d.ts`,
     `${dist}/types/src/packages/**/utils.d.ts`,
     `${dist}/types/src/locales/*.d.ts`,
-    `${dist}/types/src/utils/*.d.ts`,
-    `${dist}/types/src/hooks/*.d.ts`,
+    `${dist}/types/src/utils/**/*.d.ts`,
+    `${dist}/types/src/hooks/**/*.d.ts`,
     `${dist}/types/src/types/**/*.d.ts`,
-  ])
+  ],{
+    ignore: [
+      `${dist}/types/src/utils/index.d.ts`,
+      `${dist}/types/src/hooks/index.d.ts`,
+    ],
+  },)
 
   for (const file of files) {
     const result = transform(
