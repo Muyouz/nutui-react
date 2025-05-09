@@ -1,3 +1,13 @@
+# v3.0.11
+
+`2025-05-09`
+
+- 📖 docs: 升级文档补充 (#3204)
+- :sparkles: feat(address): v15 适配 (#3171)
+- :bug: fix: 修复编译单个组件在小程序下路径异常的问题 (#3215)
+- :bug: fix(picker): 解决透传popup的round属性不生效问题 (#3205)
+- zap: perf: optimize the performance issues caused by style injection (#3203)
+
 # v3.0.10
 
 `2025-04-25`
