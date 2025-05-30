@@ -1,3 +1,18 @@
+# v3.0.13
+
+`2025-05-30`
+
+- :sparkles: feat(lottie): 支持显示设置 dpr 设置宽高 (#3237)
+- :sparkles: feat(Textarea): 增加 ref 属性 (#3229)
+- :sparkles: feat(Swiper): 修订autoplay属性,并在taro版本上对齐了tc属性值 (#3225)
+- :bug: fix: 删除无用代码
+- :bug: fix: 适配td (#3241)
+- :bug: fix(input): 不需要加 get 属性的，用 nativeElement 就可了 (#3235)
+- :bug: fix(pickerview): 高度获取失败兜底值变更 (#3230)
+- :bug: fix(uploader): 修复官网蒙层层级、demo中ListItem类型的引入并更新文档 (#3239)
+- :bug: fix(textarea): 修订没有写placeholder时无法展示默认值的情况 (#3233)
+- :bug: fix(configprovider): 调整demo展示 (#3232)
+
 # v3.0.12
 
 `2025-05-17`
