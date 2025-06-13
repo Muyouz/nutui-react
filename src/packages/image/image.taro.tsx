@@ -118,7 +118,13 @@ export const Image: FunctionComponent<Partial<TaroImageProps>> = (props) => {
     >
       <TImage
         {...rest}
-        className={`${classPrefix}-default ${className ? `${className}-image` : ''}`}
+        className={classNames(
+          `${classPrefix}-default`,
+          className && `${className}-image`,
+          {
+            [`${classPrefix}-error`]: isError,
+          }
+        )}
         style={imgStyle}
         src={src}
         onLoad={(e) => handleLoad(e)}
