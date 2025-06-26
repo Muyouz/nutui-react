@@ -36,6 +36,7 @@ export const CalendarCard = React.forwardRef<
     style,
     className,
     type,
+    title,
     value,
     defaultValue,
     firstDayOfWeek,
@@ -456,7 +457,7 @@ export const CalendarCard = React.forwardRef<
 
   return days.length > 0 ? (
     <div className={classNames(prefixCls, className)} style={style}>
-      {renderHeader()}
+      {title || renderHeader()}
       {renderContent()}
     </div>
   ) : null
