@@ -1,3 +1,21 @@
+# v3.0.15
+
+`2025-06-27`
+
+- 📖 docs(checkbox): 修订数据类型 (#3273)
+- :sparkles: feat(dialog): close和cancel各司其职 (#3282)
+- :sparkles: feat(calendarcard): 增加自定义头 (#3285)
+- :sparkles: feat(calendarcard): 对函数做了优化处理 (#3284)
+- :bug: fix(configprovider): 修订路径别名 (#3287)
+- :bug: fix(form): 单测错误修复 (#3286)
+- :bug: fix(noticebar): first item is not visible when scrolling vertically (#3249)
+- :bug: fix(form): 修复右侧星星无法展示的问题 (#3283)
+- :bug: fix(form): label无法修改字号 (#3280)
+- :bug: fix: remove -zIndex CSS variable due to lower priority and default value confusion (#3262)
+- :bug: fix(button): 禁用样式修订 (#3279)
+- :bug: fix(datepicker): 修改不设置事件类型的返回值 (#3270)
+- :bug: fix(pickerview): 修改快速滚动偶现滑动错位问题 (#3278)
+
 # v3.0.14
 
 `2025-06-13`
