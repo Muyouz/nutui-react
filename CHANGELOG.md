@@ -1,3 +1,13 @@
+# v3.0.17
+
+`2025-08-01`
+
+- :sparkles: feat: add plugin for bizui using nutui (#3318)
+- :bug: fix(skeleton): correct v3 update docs (#3313)
+- :bug: fix(pulltorefresh): 增加 catchMove 属性，用于显示控制 (#3311)
+- :bug: fix: 修复日历只有一个月的情况 (#3306)
+- 🏡 chore(harmonycss): 每个组件构建全量的css (#3316)
+
 # v3.0.16
 
 `2025-07-04`
