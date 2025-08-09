@@ -56,18 +56,19 @@ export const Overlay: FunctionComponent<
     }
   }
 
-  const renderOverlay = () => (
-    <View
-      ref={nodeRef}
-      className={classes}
-      style={styles}
-      {...(rest as any)}
-      catchMove={lockScroll}
-      onClick={handleClick}
-    >
-      {children}
-    </View>
-  )
+  const renderOverlay = () =>
+    innerVisible && (
+      <View
+        ref={nodeRef}
+        className={classes}
+        style={styles}
+        {...(rest as any)}
+        catchMove={lockScroll}
+        onClick={handleClick}
+      >
+        {children}
+      </View>
+    )
 
   return renderOverlay()
   // return (
