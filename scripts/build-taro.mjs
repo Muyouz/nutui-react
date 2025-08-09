@@ -444,15 +444,40 @@ async function buildHarmonyCSS(themeName = '') {
     ),
   )
   for (const file of componentScssFiles) {
+    const base = basename(file)
+    const componentName = base.replace('.scss', '')
+
+    const ignoreList = ['dialog', 'button', 'overlay']
+    // 特殊处理 dialog 组件，直接使用 harmony.css 文件
+    if (ignoreList.includes(componentName)) {
+      const harmonyFile = join(__dirname, `../src/packages/${componentName}/${componentName}.harmony.css`)
+      try {
+        const harmonyContent = await readFile(harmonyFile, { encoding: 'utf8' })
+        const cssPath = relative('src', join(__dirname, `../src/packages/${componentName}`))
+        const themeDir = themeName ? `style-${themeName}` : 'style'
+
+        await dest(
+          join(`${dist}/es`, cssPath, `${themeDir}/style.harmony.css`),
+          harmonyContent,
+        )
+        await dest(
+          join(`${dist}/cjs`, cssPath, `${themeDir}/style.harmony.css`),
+          harmonyContent,
+        )
+        continue
+      } catch (error) {
+        console.warn(`${componentName}.harmony.css not found, falling back to SCSS compilation`)
+      }
+    }
+
+    // 其他组件保持原有逻辑
     const scssContent = await readFile(join(__dirname, '../', file), {
       encoding: 'utf8',
     })
-    // countup 是特例
-    const base = basename(file)
     const loadPath = join(
       __dirname,
       '../src/packages',
-      base.replace('.scss', ''),
+      componentName,
     )
     const cssPath = relative('src', loadPath)
     // 删除 import

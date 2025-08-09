@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
+// import { CSSTransition } from 'react-transition-group'
 import { View, ITouchEvent } from '@tarojs/components'
 import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
@@ -153,12 +153,8 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
           <Button
             type="primary"
             size="large"
-            className={classNames(`${classPrefix}-footer-ok ${btnClass}`, {
-              disabled: disableConfirmButton,
-            })}
-            disabled={disableConfirmButton}
+            className={`${btnClass}`}
             onClick={(e) => handleOk(e)}
-            loading={loading}
           >
             {confirmText || locale.confirm}
           </Button>
@@ -212,28 +208,45 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
 
   const renderContent = () => {
     const contentZIndex = harmony() ? zIndex + 1 : zIndex // 解决harmony层级问题
+
+    // 鸿蒙当前不支持CSSTransition，所以直接返回Content
     return (
-      <CSSTransition
-        in={visible}
-        timeout={300}
-        classNames="fadeDialog"
-        unmountOnExit
-        appear
+      <Content
+        className={className}
+        style={{ zIndex: contentZIndex, ...style }}
+        title={title}
+        header={header}
+        close={renderCloseIcon()}
+        footer={renderFooter()}
+        footerDirection={footerDirection}
+        visible={visible}
       >
-        <Content
-          className={className}
-          style={{ zIndex: contentZIndex, ...style }}
-          title={title}
-          header={header}
-          close={renderCloseIcon()}
-          footer={renderFooter()}
-          footerDirection={footerDirection}
-          visible={visible}
-        >
-          {content || children}
-        </Content>
-      </CSSTransition>
+        {content || children}
+      </Content>
     )
+
+    // return (
+    //   <CSSTransition
+    //     in={visible}
+    //     timeout={300}
+    //     classNames="fadeDialog"
+    //     unmountOnExit
+    //     appear
+    //   >
+    //     <Content
+    //       className={className}
+    //       style={{ zIndex: contentZIndex, ...style }}
+    //       title={title}
+    //       header={header}
+    //       close={renderCloseIcon()}
+    //       footer={renderFooter()}
+    //       footerDirection={footerDirection}
+    //       visible={visible}
+    //     >
+    //       {content || children}
+    //     </Content>
+    //   </CSSTransition>
+    // )
   }
 
   return (
