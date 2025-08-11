@@ -70,5 +70,7 @@ jobs:
         run: pnpm --dir ./release/h5 publish:beta
 
       - name: Run Releases @muyouz/nutui-react-taro
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
         run: pnpm --dir ./release/taro publish:beta
