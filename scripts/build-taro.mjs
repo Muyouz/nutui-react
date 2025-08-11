@@ -499,7 +499,7 @@ async function buildHarmonyCSS(themeName = '') {
 function generateReleasePackageJson() {
   delete packageJson.dependencies['@nutui/icons-react']
   return JSON.stringify({
-    name: '@nutui/nutui-react-taro',
+    name: '@muyouz/nutui-react-taro',
     version: packageJson.version,
     style: packageJson.style,
     main: packageJson.main,
