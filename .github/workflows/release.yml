@@ -42,13 +42,13 @@ jobs:
             exit 1
           fi
 
-      - name: Run Release @nutui/nutui-react
+      - name: Run Release @muyouz/nutui-react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
         run: pnpm --dir ./release/h5 publish
 
-      - name: Run Releases @nutui/nutui-react-taro
+      - name: Run Releases @muyouz/nutui-react-taro
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: env.ABORT != 'true'
