@@ -135,12 +135,12 @@ $Magenta-6-dark: #e26bfa;
 $Rosered-6-dark: #fa668c;
 
 // 原子化字号变量（主题无关）
-$font_size_10: 10; // 超小字号
-$font_size_12: 12; // 小字号
-$font_size_14: 14; // 基础字号
-$font_size_15: 15; // 大字号
-$font_size_18: 18; // 超大字号
-$font_size_24: 24; // 特大字号
+$font_size_10: 10px; // 超小字号
+$font_size_12: 12px; // 小字号
+$font_size_14: 14px; // 基础字号
+$font_size_15: 15px; // 大字号
+$font_size_18: 18px; // 超大字号
+$font_size_24: 24px; // 特大字号
 
 // 原子化字重变量（主题无关）
 $font_weight_light: 300; // 细体
@@ -148,20 +148,20 @@ $font_weight_regular: 400; // 常规
 $font_weight_semibold: 600; // 半粗体
 
 // 原子化圆角变量（主题无关）
-$border_radius_0: 0; // 无圆角
-$border_radius_2: 2; // 小圆角
-$border_radius_4: 4; // 基础圆角
-$border_radius_6: 6; // 大圆角
-$border_radius_8: 8; // 超大圆角
+$border_radius_0: 0px; // 无圆角
+$border_radius_2: 2px; // 小圆角
+$border_radius_4: 4px; // 基础圆角
+$border_radius_6: 6px; // 大圆角
+$border_radius_8: 8px; // 超大圆角
 
 // 按钮尺寸变量
-$jdbutton-height-xxxlarge: 48; // 48高度按钮
-$jdbutton-height-xxlarge: 44; // 44高度按钮
-$jdbutton-height-xlarge: 40; // 40高度按钮
-$jdbutton-height-large: 36; // 36高度按钮
-$jdbutton-height-normal: 32; // 32高度按钮
-$jdbutton-height-small: 28; // 28高度按钮
-$jdbutton-height-mini: 24; // 24高度按钮
+$jdbutton-height-xxxlarge: 48px; // 48高度按钮
+$jdbutton-height-xxlarge: 44px; // 44高度按钮
+$jdbutton-height-xlarge: 40px; // 40高度按钮
+$jdbutton-height-large: 36px; // 36高度按钮
+$jdbutton-height-normal: 32px; // 32高度按钮
+$jdbutton-height-small: 28px; // 28高度按钮
+$jdbutton-height-mini: 24px; // 24高度按钮
 
 // 基础样式类（保持现有结构）
 .nut-jdbutton {
@@ -184,10 +184,8 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   // 内容区域
   &-content {
-    display: flex; // 保留flex布局用于垂直方向排列
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: block; // 使用块级布局，更简单
+    text-align: center; // 文本居中
     white-space: nowrap; // 不换行
     overflow: hidden; // 超出隐藏
     text-overflow: ellipsis; // 文字超出显示...
@@ -200,6 +198,7 @@ $jdbutton-height-mini: 24; // 24高度按钮
     white-space: nowrap; // 不换行
     overflow: hidden; // 超出隐藏
     text-overflow: ellipsis; // 文字超出显示...
+    text-align: center; // 文本居中
   }
 
   // 副文本
@@ -209,14 +208,15 @@ $jdbutton-height-mini: 24; // 24高度按钮
     white-space: nowrap; // 不换行
     overflow: hidden; // 超出隐藏
     text-overflow: ellipsis; // 文字超出显示...
+    text-align: center; // 文本居中
   }
 
   // 左侧图标
   &-left-icon {
-    margin-right: 4; // 默认间距
+    margin-right: 4px; // 默认间距
     flex-shrink: 0; // 防止图标被压缩
-    width: 16; // 默认图标宽度
-    height: 16; // 默认图标高度
+    width: 16px; // 默认图标宽度
+    height: 16px; // 默认图标高度
     display: flex;
     align-items: center;
     justify-content: center;
@@ -225,10 +225,10 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   // 右侧图标
   &-right-icon {
-    margin-left: 4; // 默认间距
+    margin-left: 4px; // 默认间距
     flex-shrink: 0; // 防止图标被压缩
-    width: 16; // 默认图标宽度
-    height: 16; // 默认图标高度
+    width: 16px; // 默认图标宽度
+    height: 16px; // 默认图标高度
     display: flex;
     align-items: center;
     justify-content: center;
@@ -239,14 +239,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-xxxlarge {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 20;
-      height: 20;
+      width: 20px;
+      height: 20px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 6;
+      margin-right: 6px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 6;
+      margin-left: 6px;
     }
   }
 
@@ -254,14 +254,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-xxlarge {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 18;
-      height: 18;
+      width: 18px;
+      height: 18px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 5;
+      margin-right: 5px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 5;
+      margin-left: 5px;
     }
   }
 
@@ -269,14 +269,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-xlarge {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 16;
-      height: 16;
+      width: 16px;
+      height: 16px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 4;
+      margin-right: 4px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 4;
+      margin-left: 4px;
     }
   }
 
@@ -284,14 +284,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-large {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 16;
-      height: 16;
+      width: 16px;
+      height: 16px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 4;
+      margin-right: 4px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 4;
+      margin-left: 4px;
     }
   }
 
@@ -299,14 +299,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-normal {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 14;
-      height: 14;
+      width: 14px;
+      height: 14px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 3;
+      margin-right: 3px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 3;
+      margin-left: 3px;
     }
   }
 
@@ -314,14 +314,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-small {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 14;
-      height: 14;
+      width: 14px;
+      height: 14px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 3;
+      margin-right: 3px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 3;
+      margin-left: 3px;
     }
   }
 
@@ -329,14 +329,14 @@ $jdbutton-height-mini: 24; // 24高度按钮
   &-mini {
     .nut-jdbutton-left-icon,
     .nut-jdbutton-right-icon {
-      width: 12;
-      height: 12;
+      width: 12px;
+      height: 12px;
     }
     .nut-jdbutton-left-icon {
-      margin-right: 2;
+      margin-right: 2px;
     }
     .nut-jdbutton-right-icon {
-      margin-left: 2;
+      margin-left: 2px;
     }
   }
 
@@ -351,11 +351,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
   // 尺寸样式
   &-xxxlarge {
     height: $jdbutton-height-xxxlarge;
-    padding: 0 20; // 48左右内边距是20
+    padding: 0 20px; // 48左右内边距是20
     margin: 0; // 移除默认外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
-    min-width: 112; // 48最小宽度112
-    width: 112 * 2;
+    min-width: 112px; // 48最小宽度112
+    width: 112px * 2;
 
     // 48号按钮的文字样式
     .nut-jdbutton-text {
@@ -369,7 +369,7 @@ $jdbutton-height-mini: 24; // 24高度按钮
       font-weight: $font_weight_regular;
       font-size: $font_size_12; // font_size_12_400
       opacity: 0.8; // Alpha0.8
-      margin-top: 6; // 主辅文案间距为6DP
+      margin-top: 6px; // 主辅文案间距为6DP
     }
 
     // 双行文字时，主文案使用14号字体
@@ -383,11 +383,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-xxlarge {
     height: $jdbutton-height-xxlarge;
-    padding: 0 16; // 44左右内边距是16
+    padding: 0 16px; // 44左右内边距是16
     margin: 0; // 移除默认外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
-    min-width: 96; // 44最小宽度96
-    width: 96 * 2;
+    min-width: 96px; // 44最小宽度96
+    width: 96px * 2;
 
     // 44号按钮的文字样式
     .nut-jdbutton-text {
@@ -401,7 +401,7 @@ $jdbutton-height-mini: 24; // 24高度按钮
       font-weight: $font_weight_regular;
       font-size: $font_size_12; // font_size_12_400
       opacity: 0.8; // Alpha0.8
-      margin-top: 6; // 主辅文案间距为6DP
+      margin-top: 6px; // 主辅文案间距为6DP
     }
 
     // 双行文字时，主文案使用14号字体
@@ -415,11 +415,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-xlarge {
     height: $jdbutton-height-xlarge;
-    padding: 0 12; // 40左右内边距是12
+    padding: 0 12px; // 40左右内边距是12
     margin: 0; // 40无外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
-    min-width: 84; // 40最小宽度84
-    width: 84 * 2;
+    min-width: 84px; // 40最小宽度84
+    width: 84px * 2;
 
     // 40号按钮的文字样式
     .nut-jdbutton-text {
@@ -431,11 +431,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-large {
     height: $jdbutton-height-large;
-    padding: 0 12; // 36左右内边距是12
+    padding: 0 12px; // 36左右内边距是12
     margin: 0; // 36无外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
-    min-width: 66; // 36最小宽度66
-    width: 66 * 2;
+    min-width: 66px; // 36最小宽度66
+    width: 66px * 2;
 
     // 36号按钮的文字样式
     .nut-jdbutton-text {
@@ -447,11 +447,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-normal {
     height: $jdbutton-height-normal;
-    padding: 0 12; // 32左右内边距是12
+    padding: 0 12px; // 32左右内边距是12
     margin: 0; // 32无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
-    min-width: 60; // 32最小宽度60
-    width: 60 * 2;
+    min-width: 60px; // 32最小宽度60
+    width: 60px * 2;
 
     // 32号按钮的文字样式
     .nut-jdbutton-text {
@@ -463,11 +463,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-small {
     height: $jdbutton-height-small;
-    padding: 0 8; // 28左右内边距是8
+    padding: 0 8px; // 28左右内边距是8
     margin: 0; // 28无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
-    min-width: 52; // 28最小宽度52
-    width: 52 * 2;
+    min-width: 52px; // 28最小宽度52
+    width: 52px * 2;
 
     // 28号按钮的文字样式
     .nut-jdbutton-text {
@@ -479,11 +479,11 @@ $jdbutton-height-mini: 24; // 24高度按钮
 
   &-mini {
     height: $jdbutton-height-mini;
-    padding: 0 6; // 24左右内边距是6
+    padding: 0 6px; // 24左右内边距是6
     margin: 0; // 24无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
-    min-width: 48; // 24最小宽度48
-    width: 48 * 2;
+    min-width: 48px; // 24最小宽度48
+    width: 48px * 2;
 
     // 24号按钮的文字样式
     .nut-jdbutton-text {
