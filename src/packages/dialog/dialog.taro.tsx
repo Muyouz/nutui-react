@@ -28,6 +28,10 @@ const defaultProps = {
   footer: '',
   confirmText: '',
   cancelText: '',
+  theme: 'light',
+  titleIcon: '',
+  subTitle: '',
+  description: '',
   hideConfirmButton: false,
   hideCancelButton: false,
   disableConfirmButton: false,
@@ -62,6 +66,10 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       closeIcon,
       content,
       disableConfirmButton,
+      theme,
+      titleIcon,
+      subTitle,
+      description,
       footer,
       footerDirection,
       header,
@@ -220,6 +228,10 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         footer={renderFooter()}
         footerDirection={footerDirection}
         visible={visible}
+        onClose={onClose}
+        titleIcon={titleIcon}
+        subTitle={subTitle}
+        description={description}
       >
         {content || children}
       </Content>
