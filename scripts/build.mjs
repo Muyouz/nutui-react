@@ -383,7 +383,7 @@ async function buildCSS(themeName = '') {
 function generateReleasePackageJson() {
   delete packageJson.dependencies['@nutui/icons-react-taro']
   return JSON.stringify({
-    name: '@nutui/nutui-react',
+    name: '@muyouz/nutui-react',
     version: packageJson.version,
     style: packageJson.style,
     main: packageJson.main,
