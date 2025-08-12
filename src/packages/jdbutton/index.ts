@@ -1,4 +1,4 @@
-import { JDButton } from './jdbutton.taro'
+import { JDButton } from './jdbutton'
 
 export type {
   JDButtonProps,
@@ -6,6 +6,6 @@ export type {
   FontSizeToken,
   FontWeightToken,
   BorderRadiusToken,
-} from './jdbutton.taro'
+} from './jdbutton'
 
 export default JDButton
