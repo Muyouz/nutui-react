@@ -14,11 +14,18 @@
   min-height: $dialog-min-height;
   padding: $dialog-padding;
   box-sizing: border-box;
+  border-radius: $dialog-border-radius;
+  background: #ffffff;
+
+  &-newclose {
+    width: 32px;
+    height: 32px;
+    margin-top: 32px;
+  }
 
   &-outer {
     position: fixed;
     max-height: 100%;
-    background-color: $white;
     transition:
       transform 0.2s,
       -webkit-transform 0.2s;
@@ -27,8 +34,10 @@
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    border-radius: $dialog-border-radius;
     animation-duration: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &-close {
@@ -78,12 +87,38 @@
   }
 
   &-header {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &-title {
     text-align: center;
     font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
     color: $color-title;
     @include oneline-ellipsis();
+  }
+
+  &-subTitle {
+    text-align: center;
+    color: #828794;
+    font-weight: 400;
+    font-family: PingFang-SC;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0px;
+  }
+
+  &-description {
+    font-family: PingFang-SC;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    color: #171a26;
   }
 
   &-content {
