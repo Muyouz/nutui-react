@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Dialog } from '../dialog'
+import { Dialog } from '../jddialog'
 
 test('show dialog base info display ', async () => {
   const onCancel = vi.fn()

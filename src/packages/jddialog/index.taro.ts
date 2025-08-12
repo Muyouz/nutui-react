@@ -1,4 +1,4 @@
-import { BaseDialog } from './dialog.taro'
+import { BaseDialog } from './jddialog.taro'
 
 export type {
   DialogConfigType,

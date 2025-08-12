@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dialog } from './dialog'
+import { Dialog } from './jddialog'
 import { destroyList, BaseDialog, DialogReturnProps } from '@/types'
 import { render as reactRender, unmount } from '@/utils/render'
 

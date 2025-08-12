@@ -875,7 +875,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "Dialog",
+          "name": "JDDialog",
           "type": "component",
           "cName": "对话框",
           "desc": "模态对话框",

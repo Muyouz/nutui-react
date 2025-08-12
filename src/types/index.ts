@@ -248,9 +248,9 @@ export * from './spec/divider/base'
 export * from './spec/divider/h5'
 export * from './spec/divider/taro'
 
-export * from './spec/dialog/base'
-export * from './spec/dialog/h5'
-export * from './spec/dialog/taro'
+export * from './spec/jddialog/base'
+export * from './spec/jddialog/h5'
+export * from './spec/jddialog/taro'
 
 export * from './spec/empty/base'
 export * from './spec/empty/h5'

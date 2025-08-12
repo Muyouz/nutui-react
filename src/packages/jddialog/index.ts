@@ -1,4 +1,4 @@
-import { Dialog } from './dialog'
+import { Dialog } from './jddialog'
 
 export type {
   DialogConfigType,
