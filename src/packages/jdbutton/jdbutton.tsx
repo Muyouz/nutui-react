@@ -57,6 +57,8 @@ export interface JDButtonProps extends BasicComponent {
   fontFamily?: string
   /** 主题模式 */
   theme?: 'light' | 'dark'
+  /** 老人模式，开启后组件放大1.2倍 */
+  elderMode?: boolean
 }
 
 const defaultProps: Partial<JDButtonProps> = {
@@ -81,6 +83,7 @@ const defaultProps: Partial<JDButtonProps> = {
   subFontWeight: undefined,
   fontFamily: undefined,
   theme: 'light',
+  elderMode: false,
 }
 
 export const JDButton = React.forwardRef<
@@ -110,6 +113,7 @@ export const JDButton = React.forwardRef<
     subFontWeight,
     fontFamily,
     theme,
+    elderMode,
     ...rest
   } = {
     ...defaultProps,
@@ -132,10 +136,19 @@ export const JDButton = React.forwardRef<
         'nut-jdbutton--disabled': !buttonEnable || specialDisable,
         'nut-jdbutton--full-width': fullWidth,
         [`nut-jdbutton--theme-${theme}`]: theme,
+        'nut-jdbutton--elder-mode': elderMode,
       },
       className
     )
-  }, [styleCode, buttonEnable, specialDisable, fullWidth, theme, className])
+  }, [
+    styleCode,
+    buttonEnable,
+    specialDisable,
+    fullWidth,
+    theme,
+    elderMode,
+    className,
+  ])
 
   const buttonStyle = useMemo(() => {
     const styles: React.CSSProperties = {
@@ -163,6 +176,12 @@ export const JDButton = React.forwardRef<
         typeof subFontWeight === 'number' ? subFontWeight : subFontWeight
     if (fontFamily) styles.fontFamily = fontFamily
 
+    // 老人模式：放大1.2倍
+    if (elderMode) {
+      styles.transform = 'scale(1.2)'
+      styles.transformOrigin = 'center center'
+    }
+
     return styles
   }, [
     style,
@@ -176,6 +195,7 @@ export const JDButton = React.forwardRef<
     fontWeight,
     subFontWeight,
     fontFamily,
+    elderMode,
   ])
 
   return (

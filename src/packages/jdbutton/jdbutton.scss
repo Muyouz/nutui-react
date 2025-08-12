@@ -355,7 +355,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 移除默认外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
     min-width: 112px; // 48最小宽度112
-    width: 112px * 2;
 
     // 48号按钮的文字样式
     .nut-jdbutton-text {
@@ -387,7 +386,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 移除默认外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
     min-width: 96px; // 44最小宽度96
-    width: 96px * 2;
 
     // 44号按钮的文字样式
     .nut-jdbutton-text {
@@ -419,7 +417,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 40无外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
     min-width: 84px; // 40最小宽度84
-    width: 84px * 2;
 
     // 40号按钮的文字样式
     .nut-jdbutton-text {
@@ -435,7 +432,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 36无外边距
     border-radius: $border_radius_6; // 48~36号按钮圆角是6
     min-width: 66px; // 36最小宽度66
-    width: 66px * 2;
 
     // 36号按钮的文字样式
     .nut-jdbutton-text {
@@ -451,7 +447,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 32无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
     min-width: 60px; // 32最小宽度60
-    width: 60px * 2;
 
     // 32号按钮的文字样式
     .nut-jdbutton-text {
@@ -467,7 +462,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 28无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
     min-width: 52px; // 28最小宽度52
-    width: 52px * 2;
 
     // 28号按钮的文字样式
     .nut-jdbutton-text {
@@ -483,7 +477,6 @@ $jdbutton-height-mini: 24px; // 24高度按钮
     margin: 0; // 24无外边距
     border-radius: $border_radius_4; // 32~24号按钮圆角是4
     min-width: 48px; // 24最小宽度48
-    width: 48px * 2;
 
     // 24号按钮的文字样式
     .nut-jdbutton-text {
@@ -1043,5 +1036,11 @@ $jdbutton-height-mini: 24px; // 24高度按钮
   }
   &-border-radius-8 {
     border-radius: $border_radius_8;
+  }
+
+  // 老人模式样式
+  &-elder-mode {
+    transform: scale(1.2);
+    transform-origin: center center;
   }
 }

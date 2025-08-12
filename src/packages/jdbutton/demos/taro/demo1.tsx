@@ -14,7 +14,7 @@ const Demo1 = () => {
       <div style={{ padding: '16px' }}>
         <JDButton
           text="次要按钮"
-          styleCode="btn_secondary_fill_normal"
+          styleCode="btn_primary_light_normal"
           onClick={() => console.log('点击了次要按钮')}
         />
       </div>
@@ -24,6 +24,14 @@ const Demo1 = () => {
           styleCode="btn_primary_fill_normal"
           buttonEnable={false}
           onClick={() => console.log('这个按钮被禁用了')}
+        />
+      </div>
+      <div style={{ padding: '16px' }}>
+        <JDButton
+          text="老人模式"
+          styleCode="btn_primary_fill_normal"
+          elderMode
+          onClick={() => console.log('点击了老人模式按钮')}
         />
       </div>
     </div>

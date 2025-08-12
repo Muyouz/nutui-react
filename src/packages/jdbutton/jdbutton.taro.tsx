@@ -58,6 +58,8 @@ export interface JDButtonProps extends BasicComponent {
   fontFamily?: string
   /** 主题模式 */
   theme?: 'light' | 'dark'
+  /** 老人模式，开启后组件放大1.2倍 */
+  elderMode?: boolean
 }
 
 const defaultProps: Partial<JDButtonProps> = {
@@ -82,6 +84,7 @@ const defaultProps: Partial<JDButtonProps> = {
   subFontWeight: undefined,
   fontFamily: undefined,
   theme: 'light',
+  elderMode: false,
 }
 
 export const JDButton = React.forwardRef<
@@ -111,6 +114,7 @@ export const JDButton = React.forwardRef<
     subFontWeight,
     fontFamily,
     theme,
+    elderMode,
     ...rest
   } = { ...defaultProps, ...props }
 
@@ -206,8 +210,14 @@ export const JDButton = React.forwardRef<
       customStyles.minWidth = 'auto'
     }
 
+    // 老人模式：放大1.2倍
+    if (elderMode) {
+      customStyles.transform = 'scale(1.2)'
+      customStyles.transformOrigin = 'center center'
+    }
+
     return { ...style, ...customStyles }
-  }, [style, backgroundColor, borderRadius, width])
+  }, [style, backgroundColor, borderRadius, width, elderMode])
 
   // 构建类名
   const buttonClassNames = classNames(
@@ -227,6 +237,7 @@ export const JDButton = React.forwardRef<
       'nut-jdbutton-with-left-icon': !!btnLeftImage && !subText,
       'nut-jdbutton-with-right-icon': !!btnRightImage && !subText,
       'nut-jdbutton-full-width': fullWidth,
+      'nut-jdbutton-elder-mode': elderMode, // 老人模式类
       // 动态字号类
       [fontSizeMap[fontSize as keyof typeof fontSizeMap]]:
         typeof fontSize === 'string' &&

@@ -52,6 +52,7 @@ import { JDButton } from '@nutui/nutui-react-taro'
 | subFontWeight | 按钮副文本字重（优先级高于styleCode默认样式） | FontWeightToken \| Number | - |
 | fontFamily | 按钮字体（优先级高于styleCode默认样式） | String | - |
 | theme | 主题模式 | 'light' \| 'dark' | 'light' |
+| elderMode | 老人模式，开启后组件放大1.2倍 | Boolean | false |
 
 ### JDButtonStyleCode 类型
 
