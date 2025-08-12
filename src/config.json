@@ -86,6 +86,20 @@
         },
         {
           "version": "3.0.0",
+          "name": "JDButton",
+          "type": "component",
+          "cName": "京东按钮",
+          "desc": "京东风格的按钮组件",
+          "sort": 1,
+          "show": true,
+          "taro": true,
+          "jdtaro": 2,
+          "v15": 1,
+          "author": "",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
           "name": "Cell",
           "type": "component",
           "cName": "单元格",

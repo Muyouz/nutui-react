@@ -1,0 +1,1047 @@
+// I. 灰阶 (Grayscale)
+
+// 1. 灰阶/内容 (Grayscale/Content)
+$ContentGray-1-light: #c2c4cc;
+$ContentGray-2-light: #828794;
+$ContentGray-3-light: #3d414d;
+$ContentGray-4-light: #171a26;
+
+// 2. 灰阶/背景 (Grayscale/Background)
+$BackgroundGray-1-light: #ffffff;
+$BackgroundGray-2-light: #f5f6fa;
+$BackgroundGray-3-light: #f2f3f7;
+
+// 3. 灰阶/蒙层 (Grayscale/Mask)
+$MaskGray-1-light: rgba(0, 0, 0, 0.02);
+$MaskGray-2-light: rgba(0, 0, 0, 0.4);
+$MaskGray-3-light: rgba(0, 0, 0, 0.7);
+
+// 4. 灰阶/线 (Grayscale/Line)
+$LineGray-1-light: rgba(0, 0, 0, 0.08);
+
+// II. 彩色 (Colors)
+
+// 1. 品牌色 (Brand Color)
+$Brand-6-light: #ff0f23;
+
+// 2. 辅助色/服务金 (Auxiliary Color/Service Gold)
+$ServiceGolden-1-light: #fff4e8;
+$ServiceGolden-2-light: rgba(181, 105, 26, 0.02);
+$ServiceGolden-3-light: rgba(181, 105, 26, 0.2);
+$ServiceGolden-4-light: #b5691a;
+$servicegolden_5-light: #ffe7cc;
+$servicegolden_6-light: #ffd8ad;
+$servicegolden_7-light: #664100;
+
+// 3. 辅助色/错误红 (Auxiliary Color/Error Red)
+$DangerRed-1-light: #fff0f4;
+$DangerRed-2-light: #ff0f23;
+
+// 4. 辅助色/成功绿 (Auxiliary Color/Success Green)
+$SuccessGreen-1-light: #ebfbeb;
+$SuccessGreen-2-light: #00d900;
+$SuccessGreen-3-light: #2aa32a;
+
+// 5. 辅助色/警示黄 (Auxiliary Color/Warning Yellow)
+$WarningYellow-1-light: #fff9e0;
+$WarningYellow-2-light: #ffbf00;
+$WarningYellow-3-light: #826800;
+
+// 6. 辅助色/系统蓝 (Auxiliary Color/System Blue)
+$InfoBlue-1-light: #e5f5ff;
+$InfoBlue-2-light: #0073ff;
+
+// 7. 平台色板 (Platform Color Palette)
+$Red-3-light: #ffadbe;
+$Red-6-light: #ff3333;
+$Red-7-light: #e53029;
+$Orang-6-light: #ff791a;
+$Yellow-6-light: #ffd500;
+$Lightgreen-6-light: #92fa00;
+$Deepgreen-6-light: #2ee52e;
+$Lightblue-6-light: #00dbf5;
+$Deepblue-6-light: #0090ff;
+$Purple-6-light: #774aff;
+$Magenta-6-light: #d419fa;
+$Rosered-6-light: #fa25a1;
+
+// 深色主题颜色变量
+
+// I. 灰阶 (Grayscale)
+
+// 1. 灰阶/内容 (Grayscale/Content)
+$ContentGray-1-dark: #666666;
+$ContentGray-2-dark: #818181;
+$ContentGray-3-dark: #999999;
+$ContentGray-4-dark: #e6e6e6;
+
+// 2. 灰阶/背景 (Grayscale/Background)
+$BackgroundGray-1-dark: #1f1f1f;
+$BackgroundGray-2-dark: #141414;
+$BackgroundGray-3-dark: #0a0a0a;
+
+// 3. 灰阶/蒙层 (Grayscale/Mask)
+$MaskGray-1-dark: rgba(0, 0, 0, 0.1);
+$MaskGray-2-dark: rgba(20, 20, 20, 0.4);
+$MaskGray-3-dark: rgba(20, 20, 20, 0.7);
+
+// 4. 灰阶/线 (Grayscale/Line)
+$LineGray-1-dark: rgba(255, 255, 255, 0.06);
+
+// II. 彩色 (Colors)
+
+// 1. 品牌色 (Brand Color)
+$Brand-6-dark: #ff0f23;
+
+// 2. 辅助色/服务金 (Auxiliary Color/Service Gold)
+$ServiceGolden-1-dark: #282723;
+$ServiceGolden-2-dark: rgba(184, 124, 63, 0.04);
+$ServiceGolden-3-dark: rgba(191, 130, 66, 0.2);
+$ServiceGolden-4-dark: #b87c3f;
+$servicegolden_5-dark: #4d3b2a;
+$servicegolden_6-dark: #33271c;
+$servicegolden_7-dark: #ccb8a3;
+
+// 3. 辅助色/错误红 (Auxiliary Color/Error Red)
+$DangerRed-1-dark: #361d1f;
+$DangerRed-2-dark: #ff3344;
+
+// 4. 辅助色/成功绿 (Auxiliary Color/Success Green)
+$SuccessGreen-1-dark: #1f2920;
+$SuccessGreen-2-dark: #32c241;
+$SuccessGreen-3-dark: #12b222;
+
+// 5. 辅助色/警示黄 (Auxiliary Color/Warning Yellow)
+$WarningYellow-1-dark: #29271f;
+$WarningYellow-2-dark: #faaf00;
+$WarningYellow-3-dark: #cc8500;
+
+// 6. 辅助色/系统蓝 (Auxiliary Color/System Blue)
+$InfoBlue-1-dark: #232928;
+$InfoBlue-2-dark: #3385ff;
+
+// 7. 平台色板 (Platform Color Palette)
+$Red-3-dark: #603840;
+$Red-6-dark: #ff3b38;
+$Red-7-dark: #ed3b34;
+$Orang-6-dark: #f57c25;
+$Yellow-6-dark: #ebb000;
+$Lightgreen-6-dark: #6fbd00;
+$Deepgreen-6-dark: #3ac23a;
+$Lightblue-6-dark: #00b4cc;
+$Deepblue-6-dark: #3ba9ff;
+$Purple-6-dark: #a78aff;
+$Magenta-6-dark: #e26bfa;
+$Rosered-6-dark: #fa668c;
+
+// 原子化字号变量（主题无关）
+$font_size_10: 10px; // 超小字号
+$font_size_12: 12px; // 小字号
+$font_size_14: 14px; // 基础字号
+$font_size_15: 15px; // 大字号
+$font_size_18: 18px; // 超大字号
+$font_size_24: 24px; // 特大字号
+
+// 原子化字重变量（主题无关）
+$font_weight_light: 300; // 细体
+$font_weight_regular: 400; // 常规
+$font_weight_semibold: 600; // 半粗体
+
+// 原子化圆角变量（主题无关）
+$border_radius_0: 0px; // 无圆角
+$border_radius_2: 2px; // 小圆角
+$border_radius_4: 4px; // 基础圆角
+$border_radius_6: 6px; // 大圆角
+$border_radius_8: 8px; // 超大圆角
+
+// 按钮尺寸变量
+$jdbutton-height-xxxlarge: 48px; // 48高度按钮
+$jdbutton-height-xxlarge: 44px; // 44高度按钮
+$jdbutton-height-xlarge: 40px; // 40高度按钮
+$jdbutton-height-large: 36px; // 36高度按钮
+$jdbutton-height-normal: 32px; // 32高度按钮
+$jdbutton-height-small: 28px; // 28高度按钮
+$jdbutton-height-mini: 24px; // 24高度按钮
+
+// 基础样式类（保持现有结构）
+.nut-jdbutton {
+  position: relative;
+  display: inline-flex; // 使用inline-flex，适合按钮类元素
+  align-items: center; // 垂直居中
+  justify-content: center; // 水平居中
+  box-sizing: border-box;
+  margin: 0; // 确保默认无外边距
+  padding: 0;
+  text-align: center; // 保留文本居中
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border-style: solid;
+  border-width: 0;
+  transition: all 0.2s;
+  width: auto; // 明确设置宽度为auto，跟随内容
+
+  // 内容区域
+  &-content {
+    display: block; // 使用块级布局，更简单
+    text-align: center; // 文本居中
+    white-space: nowrap; // 不换行
+    overflow: hidden; // 超出隐藏
+    text-overflow: ellipsis; // 文字超出显示...
+    max-width: 100%; // 最大宽度不超过父容器
+  }
+
+  // 主文本
+  &-text {
+    font-weight: normal;
+    white-space: nowrap; // 不换行
+    overflow: hidden; // 超出隐藏
+    text-overflow: ellipsis; // 文字超出显示...
+    text-align: center; // 文本居中
+  }
+
+  // 副文本
+  &-subtext {
+    font-weight: normal;
+    font-size: smaller;
+    white-space: nowrap; // 不换行
+    overflow: hidden; // 超出隐藏
+    text-overflow: ellipsis; // 文字超出显示...
+    text-align: center; // 文本居中
+  }
+
+  // 左侧图标
+  &-left-icon {
+    margin-right: 4px; // 默认间距
+    flex-shrink: 0; // 防止图标被压缩
+    width: 16px; // 默认图标宽度
+    height: 16px; // 默认图标高度
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain; // 确保图标比例正确
+  }
+
+  // 右侧图标
+  &-right-icon {
+    margin-left: 4px; // 默认间距
+    flex-shrink: 0; // 防止图标被压缩
+    width: 16px; // 默认图标宽度
+    height: 16px; // 默认图标高度
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain; // 确保图标比例正确
+  }
+
+  // 48号按钮的图标尺寸和间距
+  &-xxxlarge {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 6px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 6px;
+    }
+  }
+
+  // 44号按钮的图标尺寸和间距
+  &-xxlarge {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 18px;
+      height: 18px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 5px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 5px;
+    }
+  }
+
+  // 40号按钮的图标尺寸和间距
+  &-xlarge {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 16px;
+      height: 16px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 4px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 4px;
+    }
+  }
+
+  // 36号按钮的图标尺寸和间距
+  &-large {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 16px;
+      height: 16px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 4px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 4px;
+    }
+  }
+
+  // 32号按钮的图标尺寸和间距
+  &-normal {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 14px;
+      height: 14px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 3px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 3px;
+    }
+  }
+
+  // 28号按钮的图标尺寸和间距
+  &-small {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 14px;
+      height: 14px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 3px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 3px;
+    }
+  }
+
+  // 24号按钮的图标尺寸和间距
+  &-mini {
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      width: 12px;
+      height: 12px;
+    }
+    .nut-jdbutton-left-icon {
+      margin-right: 2px;
+    }
+    .nut-jdbutton-right-icon {
+      margin-left: 2px;
+    }
+  }
+
+  // 通栏模式 - 仅48/44高度按钮支持
+  &.nut-jdbutton-full-width {
+    &.nut-jdbutton-xxxlarge,
+    &.nut-jdbutton-xxlarge {
+      width: 100%; // 占满父容器宽度
+    }
+  }
+
+  // 尺寸样式
+  &-xxxlarge {
+    height: $jdbutton-height-xxxlarge;
+    padding: 0 20px; // 48左右内边距是20
+    margin: 0; // 移除默认外边距
+    border-radius: $border_radius_6; // 48~36号按钮圆角是6
+    min-width: 112px; // 48最小宽度112
+    width: 112px * 2;
+
+    // 48号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_18; // 单行文字：font_size_18_600
+    }
+
+    .nut-jdbutton-subtext {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_regular;
+      font-size: $font_size_12; // font_size_12_400
+      opacity: 0.8; // Alpha0.8
+      margin-top: 6px; // 主辅文案间距为6DP
+    }
+
+    // 双行文字时，主文案使用14号字体
+    &.nut-jdbutton-with-subtext {
+      .nut-jdbutton-text {
+        font-size: $font_size_14; // 双行文字主文案：font_size_14_600
+        font-weight: $font_weight_semibold;
+      }
+    }
+  }
+
+  &-xxlarge {
+    height: $jdbutton-height-xxlarge;
+    padding: 0 16px; // 44左右内边距是16
+    margin: 0; // 移除默认外边距
+    border-radius: $border_radius_6; // 48~36号按钮圆角是6
+    min-width: 96px; // 44最小宽度96
+    width: 96px * 2;
+
+    // 44号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_15; // 单行文字：font_size_15_600
+    }
+
+    .nut-jdbutton-subtext {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_regular;
+      font-size: $font_size_12; // font_size_12_400
+      opacity: 0.8; // Alpha0.8
+      margin-top: 6px; // 主辅文案间距为6DP
+    }
+
+    // 双行文字时，主文案使用14号字体
+    &.nut-jdbutton-with-subtext {
+      .nut-jdbutton-text {
+        font-size: $font_size_14; // 双行文字主文案：font_size_14_600
+        font-weight: $font_weight_semibold;
+      }
+    }
+  }
+
+  &-xlarge {
+    height: $jdbutton-height-xlarge;
+    padding: 0 12px; // 40左右内边距是12
+    margin: 0; // 40无外边距
+    border-radius: $border_radius_6; // 48~36号按钮圆角是6
+    min-width: 84px; // 40最小宽度84
+    width: 84px * 2;
+
+    // 40号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_15; // 单行文字：font_size_15_600
+    }
+  }
+
+  &-large {
+    height: $jdbutton-height-large;
+    padding: 0 12px; // 36左右内边距是12
+    margin: 0; // 36无外边距
+    border-radius: $border_radius_6; // 48~36号按钮圆角是6
+    min-width: 66px; // 36最小宽度66
+    width: 66px * 2;
+
+    // 36号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_14; // 单行文字：font_size_14_600
+    }
+  }
+
+  &-normal {
+    height: $jdbutton-height-normal;
+    padding: 0 12px; // 32左右内边距是12
+    margin: 0; // 32无外边距
+    border-radius: $border_radius_4; // 32~24号按钮圆角是4
+    min-width: 60px; // 32最小宽度60
+    width: 60px * 2;
+
+    // 32号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_12; // 单行文字：font_size_12_600
+    }
+  }
+
+  &-small {
+    height: $jdbutton-height-small;
+    padding: 0 8px; // 28左右内边距是8
+    margin: 0; // 28无外边距
+    border-radius: $border_radius_4; // 32~24号按钮圆角是4
+    min-width: 52px; // 28最小宽度52
+    width: 52px * 2;
+
+    // 28号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_12; // 单行文字：font_size_12_600
+    }
+  }
+
+  &-mini {
+    height: $jdbutton-height-mini;
+    padding: 0 6px; // 24左右内边距是6
+    margin: 0; // 24无外边距
+    border-radius: $border_radius_4; // 32~24号按钮圆角是4
+    min-width: 48px; // 24最小宽度48
+    width: 48px * 2;
+
+    // 24号按钮的文字样式
+    .nut-jdbutton-text {
+      font-family: 'PingFang SC', 'PingFang', sans-serif;
+      font-weight: $font_weight_semibold;
+      font-size: $font_size_12; // 单行文字：font_size_12_600
+    }
+  }
+
+  // 浅色主题样式（默认）
+  &.nut-jdbutton-theme-light {
+    &.nut-jdbutton-primary-fill {
+      background-color: $Brand-6-light;
+      color: $BackgroundGray-1-light;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $Red-7-light;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $BackgroundGray-1-light;
+      }
+    }
+
+    &.nut-jdbutton-service-fill {
+      background-color: $servicegolden_5-light;
+      color: $servicegolden_7-light;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $servicegolden_6-light;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $servicegolden_7-light;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $servicegolden_7-light;
+        }
+      }
+    }
+
+    &.nut-jdbutton-primary-light {
+      background-color: $DangerRed-1-light;
+      color: $DangerRed-2-light;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $DangerRed-1-light;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $DangerRed-2-light;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge,
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-7-light;
+          }
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $DangerRed-2-light;
+          }
+        }
+      }
+    }
+
+    &.nut-jdbutton-gray {
+      background-color: $BackgroundGray-3-light;
+      color: $ContentGray-4-light;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $BackgroundGray-3-light;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $ContentGray-4-light;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-4-light;
+        }
+      }
+    }
+
+    &.nut-jdbutton-white {
+      background-color: $BackgroundGray-1-light;
+      color: $ContentGray-4-light;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $BackgroundGray-1-light;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $ContentGray-4-light;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-4-light;
+        }
+      }
+    }
+  }
+
+  // 深色主题样式
+  &.nut-jdbutton-theme-dark {
+    &.nut-jdbutton-primary-fill {
+      background-color: $Brand-6-dark;
+      color: $BackgroundGray-1-dark;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $Red-7-dark;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $BackgroundGray-1-dark;
+      }
+    }
+
+    &.nut-jdbutton-service-fill {
+      background-color: $servicegolden_5-dark;
+      color: $servicegolden_7-dark;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $servicegolden_6-dark;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $servicegolden_7-dark;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $servicegolden_7-dark;
+        }
+      }
+    }
+
+    &.nut-jdbutton-primary-light {
+      background-color: $DangerRed-1-dark;
+      color: $DangerRed-2-dark;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $DangerRed-1-dark;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $DangerRed-2-dark;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge,
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-7-dark;
+          }
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $DangerRed-2-dark;
+          }
+        }
+      }
+    }
+
+    &.nut-jdbutton-gray {
+      background-color: $BackgroundGray-3-dark;
+      color: $ContentGray-4-dark;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $BackgroundGray-3-dark;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $ContentGray-4-dark;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-4-dark;
+        }
+      }
+    }
+
+    &.nut-jdbutton-white {
+      background-color: $BackgroundGray-1-dark;
+      color: $ContentGray-4-dark;
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        background-color: $BackgroundGray-1-dark;
+      }
+
+      .nut-jdbutton-text,
+      .nut-jdbutton-subtext {
+        color: $ContentGray-4-dark;
+      }
+
+      &:active:not(.nut-jdbutton-disabled):not(.nut-jdbutton-special-disabled) {
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-4-dark;
+        }
+      }
+    }
+  }
+
+  // 禁用状态样式
+  &.nut-jdbutton-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      opacity: 0.6;
+    }
+
+    &.nut-jdbutton-theme-light {
+      &.nut-jdbutton-primary-fill {
+        background-color: $ContentGray-1-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-service-fill {
+        background-color: $ContentGray-1-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-primary-light {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge {
+          background-color: $BackgroundGray-2-light;
+        }
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $BackgroundGray-3-light;
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $BackgroundGray-3-light;
+        }
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-gray {
+        background-color: $BackgroundGray-3-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-white {
+        background-color: $BackgroundGray-1-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-light;
+        }
+      }
+    }
+
+    &.nut-jdbutton-theme-dark {
+      &.nut-jdbutton-primary-fill {
+        background-color: $ContentGray-1-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-service-fill {
+        background-color: $ContentGray-1-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-primary-light {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge {
+          background-color: $BackgroundGray-2-dark;
+        }
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $BackgroundGray-3-dark;
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $BackgroundGray-3-dark;
+        }
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-gray {
+        background-color: $BackgroundGray-3-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-white {
+        background-color: $BackgroundGray-1-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-dark;
+        }
+      }
+    }
+  }
+
+  // 特殊禁用状态样式
+  &.nut-jdbutton-special-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+
+    .nut-jdbutton-left-icon,
+    .nut-jdbutton-right-icon {
+      opacity: 0.6;
+    }
+
+    &.nut-jdbutton-theme-light {
+      &.nut-jdbutton-primary-fill {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge,
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $Red-3-light;
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $ContentGray-1-light;
+        }
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-service-fill {
+        background-color: $servicegolden_5-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $servicegolden_7-light;
+        }
+      }
+
+      &.nut-jdbutton-primary-light {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge {
+          background-color: $DangerRed-1-light;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-3-light;
+          }
+        }
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $DangerRed-1-light;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-3-light;
+          }
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $BackgroundGray-3-light;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $ContentGray-1-light;
+          }
+        }
+      }
+
+      &.nut-jdbutton-gray {
+        background-color: $BackgroundGray-3-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-light;
+        }
+      }
+
+      &.nut-jdbutton-white {
+        background-color: $BackgroundGray-1-light;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-light;
+        }
+      }
+    }
+
+    &.nut-jdbutton-theme-dark {
+      &.nut-jdbutton-primary-fill {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge,
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $Red-3-dark;
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $ContentGray-1-dark;
+        }
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $BackgroundGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-service-fill {
+        background-color: $servicegolden_5-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $servicegolden_7-dark;
+        }
+      }
+
+      &.nut-jdbutton-primary-light {
+        &.nut-jdbutton-xxxlarge,
+        &.nut-jdbutton-xxlarge {
+          background-color: $DangerRed-1-dark;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-3-dark;
+          }
+        }
+        &.nut-jdbutton-xlarge,
+        &.nut-jdbutton-large {
+          background-color: $DangerRed-1-dark;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $Red-3-dark;
+          }
+        }
+        &.nut-jdbutton-normal,
+        &.nut-jdbutton-small,
+        &.nut-jdbutton-mini {
+          background-color: $BackgroundGray-3-dark;
+          .nut-jdbutton-text,
+          .nut-jdbutton-subtext {
+            color: $ContentGray-1-dark;
+          }
+        }
+      }
+
+      &.nut-jdbutton-gray {
+        background-color: $BackgroundGray-3-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-dark;
+        }
+      }
+
+      &.nut-jdbutton-white {
+        background-color: $BackgroundGray-1-dark;
+        .nut-jdbutton-text,
+        .nut-jdbutton-subtext {
+          color: $ContentGray-1-dark;
+        }
+      }
+    }
+  }
+
+  // 原子化字号类
+  &-font-size-10 {
+    font-size: $font_size_10;
+  }
+  &-font-size-12 {
+    font-size: $font_size_12;
+  }
+  &-font-size-14 {
+    font-size: $font_size_14;
+  }
+  &-font-size-15 {
+    font-size: $font_size_15;
+  }
+  &-font-size-18 {
+    font-size: $font_size_18;
+  }
+  &-font-size-24 {
+    font-size: $font_size_24;
+  }
+
+  // 原子化字重类
+  &-font-weight-light {
+    font-weight: $font_weight_light;
+  }
+  &-font-weight-regular {
+    font-weight: $font_weight_regular;
+  }
+  &-font-weight-semibold {
+    font-weight: $font_weight_semibold;
+  }
+
+  // 原子化圆角类
+  &-border-radius-0 {
+    border-radius: $border_radius_0;
+  }
+  &-border-radius-2 {
+    border-radius: $border_radius_2;
+  }
+  &-border-radius-4 {
+    border-radius: $border_radius_4;
+  }
+  &-border-radius-6 {
+    border-radius: $border_radius_6;
+  }
+  &-border-radius-8 {
+    border-radius: $border_radius_8;
+  }
+}
