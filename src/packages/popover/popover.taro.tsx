@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { nextTick } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
@@ -83,7 +83,7 @@ export const Popover: FunctionComponent<
   const popoverId = `popover-${uid}`
 
   const getWrapperPosition = async () => {
-    nextTick(async () => {
+    Taro.nextTick(async () => {
       const rect = targetId
         ? await getRectInMultiPlatform(
             document.querySelector(`#${targetId}`),
@@ -103,7 +103,7 @@ export const Popover: FunctionComponent<
   }
 
   const getPopoverContentW = async () => {
-    nextTick(async () => {
+    Taro.nextTick(async () => {
       const rectContent = await getRectInMultiPlatform(
         popoverContentRef.current
       )
@@ -164,7 +164,9 @@ export const Popover: FunctionComponent<
           styles.left = pxTransform(left + parallel)
         }
         if (skew === 'right') {
-          styles.left = pxTransform(right + parallel)
+          // styles.left = pxTransform(right - popWidth + parallel)
+          // TODO: 能实现效果，但有点奇怪，怀疑是鸿蒙css的bug
+          styles.left = pxTransform(right - parallel)
         }
       }
       if (['left', 'right'].includes(direction)) {
