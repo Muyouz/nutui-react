@@ -888,6 +888,19 @@
         },
         {
           "version": "3.0.0",
+          "name": "Dialog",
+          "type": "component",
+          "cName": "对话框",
+          "desc": "模态对话框",
+          "sort": 12,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "yangjinjun3",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
           "name": "Drag",
           "type": "component",
           "cName": "拖拽",
@@ -967,6 +980,19 @@
         {
           "version": "3.0.0",
           "name": "JDPopover",
+          "type": "component",
+          "cName": "气泡弹出框",
+          "desc": "气泡弹出框",
+          "sort": 19,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "lzz",
+          "dd": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "Popover",
           "type": "component",
           "cName": "气泡弹出框",
           "desc": "气泡弹出框",

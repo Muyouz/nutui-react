@@ -1,0 +1,17 @@
+.brickBox {
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+
+  .brick {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff0f23 0%, #fa6419 100%);
+    border-radius: 10px;
+  }
+}
+
+.custom-color {
+  --nutui-popover-text-color: rgb(255, 255, 255);
+  --nutui-popover-content-background-color: rgb(255, 0, 0);
+}

@@ -1,0 +1,178 @@
+@import '../button/button.scss';
+@import '../overlay/overlay.scss';
+@import '../../styles/mixins/index';
+
+.nut-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $dialog-width;
+  min-width: $dialog-min-width;
+  /* #ifndef harmony dynamic*/
+  max-height: 67%;
+  /* #endif */
+  min-height: $dialog-min-height;
+  padding: $dialog-padding;
+  box-sizing: border-box;
+
+  &-outer {
+    position: fixed;
+    max-height: 100%;
+    background-color: $white;
+    transition:
+      transform 0.2s,
+      -webkit-transform 0.2s;
+    -webkit-overflow-scrolling: touch;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: $dialog-border-radius;
+    animation-duration: 0.3s;
+  }
+
+  &-close {
+    position: absolute !important;
+    z-index: 1;
+    cursor: pointer;
+    width: $dialog-close-width;
+    height: $dialog-close-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $dialog-close-color;
+    .nut-icon {
+      font-size: $dialog-close-width;
+      width: $dialog-close-width;
+      height: $dialog-close-height;
+    }
+
+    &-top-right {
+      top: $dialog-close-top;
+      right: $dialog-close-right;
+    }
+
+    &-top-left {
+      top: $dialog-close-top;
+      left: $dialog-close-left;
+    }
+
+    &-bottom {
+      bottom: -64px;
+      width: $dialog-bottom-close-icon-size;
+      height: $dialog-bottom-close-icon-size;
+      left: 50%;
+      transform: translateX(-50%);
+      .nut-icon {
+        color: $color-text-disabled;
+        background-color: $color-mask-part;
+        border-radius: 50%;
+        width: $dialog-bottom-close-icon-size;
+        height: $dialog-bottom-close-icon-size;
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &-header {
+    display: block;
+    text-align: center;
+    font-size: $dialog-header-font-size;
+    font-weight: $dialog-header-font-weight;
+    color: $color-title;
+    @include oneline-ellipsis();
+  }
+
+  &-content {
+    width: 100%;
+    margin: $dialog-content-margin;
+    max-height: $dialog-content-max-height;
+    line-height: $dialog-content-line-height;
+    font-size: $font-size-base;
+    color: $color-title;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-align: $dialog-content-text-align;
+    overflow-y: auto;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+
+    &.vertical {
+      flex-direction: column;
+
+      .nut-button {
+        min-width: 100%;
+      }
+
+      .nut-dialog-footer-cancel {
+        margin: 0;
+        color: $color-text;
+        font-size: $font-size-base;
+        display: flex;
+        justify-content: center;
+        margin-top: $dialog-vertical-footer-ok-margin-top;
+      }
+    }
+
+    .nut-button {
+      min-width: $dialog-footer-button-min-width;
+    }
+
+    &-cancel.nut-dialog-footer-cancel {
+      margin-right: $dialog-footer-cancel-margin-right;
+      background: $dialog-footer-cancel-bg;
+    }
+
+    &-ok {
+      max-width: $dialog-footer-ok-max-width;
+      font-weight: $font-weight-bold;
+    }
+    &-block {
+      &.nut-button {
+        min-width: 100%;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-dialog,
+.nut-rtl .nut-dialog {
+  &-outer {
+    left: auto;
+    right: 50%;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+  }
+
+  &-close {
+    &-top-right {
+      right: auto;
+      left: $dialog-close-right;
+    }
+
+    &-top-left {
+      left: auto;
+      right: $dialog-close-left;
+    }
+  }
+
+  &-footer {
+    &-cancel.nut-dialog-footer-cancel {
+      margin-right: 0;
+      margin-left: $dialog-footer-cancel-margin-right;
+    }
+  }
+
+  &-content {
+    text-align: var(--nutui-dialog-content-text-align, right);
+  }
+}
