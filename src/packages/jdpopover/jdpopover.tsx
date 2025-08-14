@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -79,6 +80,7 @@ export const Popover: FunctionComponent<
         getWrapperPosition()
       }, 0)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, location])
 
   const update = useRef((e: any) => {

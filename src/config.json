@@ -966,7 +966,7 @@
         },
         {
           "version": "3.0.0",
-          "name": "Popover",
+          "name": "JDPopover",
           "type": "component",
           "cName": "气泡弹出框",
           "desc": "气泡弹出框",

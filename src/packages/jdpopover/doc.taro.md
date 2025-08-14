@@ -1,4 +1,4 @@
-# Popover 气泡弹出框
+# JDPopover 气泡弹出框
 
 点击或在元素上悬停鼠标，弹出气泡卡片浮层。
 
@@ -89,7 +89,7 @@ bottom-right  # 底部右侧位置
 
 :::
 
-## Popover
+## JDPopover
 
 ### Props
 

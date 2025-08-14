@@ -36,7 +36,7 @@ const defaultProps = {
 }
 
 const classPrefix = `nut-popover`
-export const Popover: FunctionComponent<
+export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
@@ -72,35 +72,45 @@ export const Popover: FunctionComponent<
   const [popWidth, setPopWidth] = useState(0)
   const [popHeight, setPopHeight] = useState(0)
   const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
+  const uid = useUuid()
+  const popoverId = `popover-${uid}`
+
   useEffect(() => {
+    const getWrapperPosition = async () => {
+      Taro.nextTick(async () => {
+        const rect = targetId
+          ? await getRectInMultiPlatform(
+              document.querySelector(`#${targetId}`),
+              targetId
+            )
+          : await getRectInMultiPlatform(popoverRef.current, popoverId)
+        const { width, height, right, left, top } = rect
+        setWrapperPosition({
+          width,
+          height,
+          left: rtl ? right : left,
+          top,
+          right: rtl ? left : right,
+        })
+        console.log(
+          'setWrapperPosition===>',
+          JSON.stringify({
+            width,
+            height,
+            left: rtl ? right : left,
+            top,
+            right: rtl ? left : right,
+          })
+        )
+        getPopoverContentW()
+      })
+    }
+
     setShowPopup(visible)
     if (visible) {
       getWrapperPosition()
     }
-  }, [visible])
-
-  const uid = useUuid()
-  const popoverId = `popover-${uid}`
-
-  const getWrapperPosition = async () => {
-    Taro.nextTick(async () => {
-      const rect = targetId
-        ? await getRectInMultiPlatform(
-            document.querySelector(`#${targetId}`),
-            targetId
-          )
-        : await getRectInMultiPlatform(popoverRef.current, popoverId)
-      const { width, height, right, left, top } = rect
-      setWrapperPosition({
-        width,
-        height,
-        left: rtl ? right : left,
-        top,
-        right: rtl ? left : right,
-      })
-      getPopoverContentW()
-    })
-  }
+  }, [visible, targetId, rtl, popoverId])
 
   const getPopoverContentW = async () => {
     Taro.nextTick(async () => {
@@ -109,6 +119,8 @@ export const Popover: FunctionComponent<
       )
       setPopWidth(rectContent.width)
       setPopHeight(rectContent.height)
+
+      console.log('popoverContentRef.rect===>', JSON.stringify(rectContent))
     })
   }
 
@@ -135,6 +147,7 @@ export const Popover: FunctionComponent<
 
   const getPopoverPosition = () => {
     const styles: CSSProperties = {}
+    console.log('wrapperPosition===>', wrapperPosition)
     if (!wrapperPosition) {
       styles.visibility = 'hidden'
       return styles
@@ -151,6 +164,7 @@ export const Popover: FunctionComponent<
     }
     if (width) {
       const dir = rtl ? 'right' : 'left'
+      console.log('dir===>', dir)
       if (['bottom', 'top'].includes(direction)) {
         const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
         styles.top = pxTransform(top + h)
@@ -188,6 +202,7 @@ export const Popover: FunctionComponent<
     }
 
     styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
+    console.log('styles====>', JSON.stringify(styles))
     return styles
   }
 
@@ -236,6 +251,14 @@ export const Popover: FunctionComponent<
       onClose?.()
     }
   }
+
+  console.log('classes===>', classes)
+  console.log(
+    'wrapper styles===>',
+    JSON.stringify({ ...getPopoverPosition(), ...style })
+  )
+  console.log('arrow styles===>', JSON.stringify(popoverArrowStyle()))
+
   return (
     <>
       {!targetId && (
@@ -313,4 +336,4 @@ export const Popover: FunctionComponent<
   )
 }
 
-Popover.displayName = 'NutPopover'
+JDPopover.displayName = 'NutPopover'

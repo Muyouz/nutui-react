@@ -150,9 +150,9 @@ export * from './spec/numberkeyboard/base'
 export * from './spec/numberkeyboard/h5'
 export * from './spec/numberkeyboard/taro'
 
-export * from './spec/popover/base'
-export * from './spec/popover/h5'
-export * from './spec/popover/taro'
+export * from './spec/jdpopover/base'
+export * from './spec/jdpopover/h5'
+export * from './spec/jdpopover/taro'
 
 export * from './spec/picker/base'
 export * from './spec/picker/h5'

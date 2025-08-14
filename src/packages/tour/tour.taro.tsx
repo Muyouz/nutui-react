@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import Popover from '@/packages/popover/index.taro'
+import Popover from '@/packages/jdpopover/index.taro'
 import { getRectById } from '@/utils/taro/get-rect-by-id'
 import { ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider/index.taro'
@@ -80,6 +80,7 @@ export const Tour: FunctionComponent<
     setActive(0)
     setShowTour(visible)
     setShowPopup(visible)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible])
 
   useEffect(() => {
