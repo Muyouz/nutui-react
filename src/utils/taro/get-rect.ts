@@ -37,10 +37,6 @@ export const getRectInMultiPlatform = async (
     // 非H5下的逻辑
     return new Promise((resolve, reject) => {
       if (lru.has(element)) {
-        console.log(
-          'getRectInMultiPlatform try get rect from lru===>',
-          JSON.stringify(lru.get(element))
-        )
         resolve(lru.get(element) as Rect)
         return
       }
@@ -48,10 +44,6 @@ export const getRectInMultiPlatform = async (
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
-          console.log(
-            'getRectInMultiPlatform exec result===>',
-            JSON.stringify(rects)
-          )
           if (rects) {
             lru.set(element, rects)
           }

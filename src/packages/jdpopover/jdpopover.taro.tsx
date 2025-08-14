@@ -92,16 +92,6 @@ export const JDPopover: FunctionComponent<
           top,
           right: rtl ? left : right,
         })
-        console.log(
-          'setWrapperPosition===>',
-          JSON.stringify({
-            width,
-            height,
-            left: rtl ? right : left,
-            top,
-            right: rtl ? left : right,
-          })
-        )
         getPopoverContentW()
       })
     }
@@ -119,8 +109,6 @@ export const JDPopover: FunctionComponent<
       )
       setPopWidth(rectContent.width)
       setPopHeight(rectContent.height)
-
-      console.log('popoverContentRef.rect===>', JSON.stringify(rectContent))
     })
   }
 
@@ -147,7 +135,6 @@ export const JDPopover: FunctionComponent<
 
   const getPopoverPosition = () => {
     const styles: CSSProperties = {}
-    console.log('wrapperPosition===>', wrapperPosition)
     if (!wrapperPosition) {
       styles.visibility = 'hidden'
       return styles
@@ -164,7 +151,6 @@ export const JDPopover: FunctionComponent<
     }
     if (width) {
       const dir = rtl ? 'right' : 'left'
-      console.log('dir===>', dir)
       if (['bottom', 'top'].includes(direction)) {
         const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
         styles.top = pxTransform(top + h)
@@ -202,7 +188,6 @@ export const JDPopover: FunctionComponent<
     }
 
     styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
-    console.log('styles====>', JSON.stringify(styles))
     return styles
   }
 
@@ -251,13 +236,6 @@ export const JDPopover: FunctionComponent<
       onClose?.()
     }
   }
-
-  console.log('classes===>', classes)
-  console.log(
-    'wrapper styles===>',
-    JSON.stringify({ ...getPopoverPosition(), ...style })
-  )
-  console.log('arrow styles===>', JSON.stringify(popoverArrowStyle()))
 
   return (
     <>
