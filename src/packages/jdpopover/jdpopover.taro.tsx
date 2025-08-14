@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { nextTick } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
@@ -36,7 +36,7 @@ const defaultProps = {
 }
 
 const classPrefix = `nut-popover`
-export const Popover: FunctionComponent<
+export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
@@ -72,38 +72,38 @@ export const Popover: FunctionComponent<
   const [popWidth, setPopWidth] = useState(0)
   const [popHeight, setPopHeight] = useState(0)
   const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
+  const uid = useUuid()
+  const popoverId = `popover-${uid}`
+
   useEffect(() => {
+    const getWrapperPosition = async () => {
+      Taro.nextTick(async () => {
+        const rect = targetId
+          ? await getRectInMultiPlatform(
+              document.querySelector(`#${targetId}`),
+              targetId
+            )
+          : await getRectInMultiPlatform(popoverRef.current, popoverId)
+        const { width, height, right, left, top } = rect
+        setWrapperPosition({
+          width,
+          height,
+          left: rtl ? right : left,
+          top,
+          right: rtl ? left : right,
+        })
+        getPopoverContentW()
+      })
+    }
+
     setShowPopup(visible)
     if (visible) {
       getWrapperPosition()
     }
-  }, [visible])
-
-  const uid = useUuid()
-  const popoverId = `popover-${uid}`
-
-  const getWrapperPosition = async () => {
-    nextTick(async () => {
-      const rect = targetId
-        ? await getRectInMultiPlatform(
-            document.querySelector(`#${targetId}`),
-            targetId
-          )
-        : await getRectInMultiPlatform(popoverRef.current, popoverId)
-      const { width, height, right, left, top } = rect
-      setWrapperPosition({
-        width,
-        height,
-        left: rtl ? right : left,
-        top,
-        right: rtl ? left : right,
-      })
-      getPopoverContentW()
-    })
-  }
+  }, [visible, targetId, rtl, popoverId])
 
   const getPopoverContentW = async () => {
-    nextTick(async () => {
+    Taro.nextTick(async () => {
       const rectContent = await getRectInMultiPlatform(
         popoverContentRef.current
       )
@@ -164,7 +164,9 @@ export const Popover: FunctionComponent<
           styles.left = pxTransform(left + parallel)
         }
         if (skew === 'right') {
-          styles.left = pxTransform(right + parallel)
+          // styles.left = pxTransform(right - popWidth + parallel)
+          // TODO: 能实现效果，但有点奇怪，怀疑是鸿蒙css的bug
+          styles.left = pxTransform(right - parallel)
         }
       }
       if (['left', 'right'].includes(direction)) {
@@ -234,6 +236,7 @@ export const Popover: FunctionComponent<
       onClose?.()
     }
   }
+
   return (
     <>
       {!targetId && (
@@ -311,4 +314,4 @@ export const Popover: FunctionComponent<
   )
 }
 
-Popover.displayName = 'NutPopover'
+JDPopover.displayName = 'NutPopover'

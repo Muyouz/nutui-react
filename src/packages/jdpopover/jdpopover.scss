@@ -4,6 +4,11 @@
   display: inline-block;
   word-break: normal;
 
+  // 用于定位元素，不显示
+  width: 1px;
+  height: 1px;
+  background-color: transparent;
+
   &-arrow {
     position: absolute;
     width: 8px;
@@ -23,45 +28,36 @@
     }
 
     &-left {
-      right: -6px;
+      right: -10px;
       transform-origin: center top;
-
-      &.nut-popover-arrow-left {
-        top: 50%;
-        transform: rotate(90deg) translateY(-50%);
-      }
+      top: 50%;
+      transform: rotate(90deg) translateY(-50%);
 
       &.nut-popover-arrow-left-top {
         top: 16px;
-        right: -8px;
-        transform: rotate(90deg) translateY(0%);
+        transform: rotate(90deg) translateY(-50%);
       }
 
       &.nut-popover-arrow-left-bottom {
         top: auto;
         bottom: 16px;
-        right: -8px;
         transform: rotate(90deg) translateY(0%);
       }
     }
 
     &-right {
       transform-origin: center top;
-      &.nut-popover-arrow-right {
-        top: 50%;
-        left: -6px;
-        transform: rotate(-90deg) translateY(-50%);
-      }
+      left: -4px;
+      top: 50%;
+      transform: rotate(-90deg) translateY(-50%);
 
       &.nut-popover-arrow-right-top {
         top: 16px;
-        left: -8px;
         transform: rotate(-90deg) translateY(0%);
       }
 
       &.nut-popover-arrow-right-bottom {
         bottom: 16px;
-        left: -8px;
         transform: rotate(-90deg) translateY(0%);
       }
     }
@@ -69,16 +65,20 @@
 
   .nut-popover-content {
     position: absolute;
-    background: $popover-content-background-color;
+    // background: $popover-content-background-color;
     border-radius: $popover-border-radius;
-    font-size: $popover-font-size;
+    // font-size: $popover-font-size;
     color: $popover-text-color;
     line-height: 28px;
     max-height: initial;
     overflow-y: initial;
+    min-height: 0;
 
     &-group {
-      padding: 0 $popover-padding;
+      position: relative;
+      padding: 8px $popover-padding;
+      border-radius: $popover-border-radius;
+      background: rgba(0, 0, 0, 0.7);
     }
 
     .nut-popover-item {
@@ -86,7 +86,7 @@
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid $popover-divider-color;
-      max-width: $popover-item-width;
+      // max-width: $popover-item-width;
       word-wrap: break-word;
 
       &:last-child {
@@ -114,6 +114,8 @@
       }
 
       &-name {
+        font-size: $popover-font-size;
+        font-weight: 400;
         width: calc(100% - 34px);
         word-break: keep-all;
         flex: 1;
@@ -202,8 +204,8 @@
 }
 
 .nut-popover-dark {
-  background: $popover-text-color;
   color: $popover-content-background-color;
+  background: transparent;
 
   .nut-popover-arrow {
     .nut-icon-ArrowRadius {
@@ -212,7 +214,7 @@
   }
 
   .nut-popover-content {
-    background: $popover-text-color !important;
+    // background: $popover-text-color !important;
     color: $popover-content-background-color !important;
     .nut-popover-item {
       &-action-icon {

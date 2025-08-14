@@ -1,4 +1,4 @@
-import { createSelectorQuery } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { MiniLru } from '@/utils/lru'
 import { getRect, inBrowser } from '@/utils/get-rect'
 
@@ -34,13 +34,13 @@ export const getRectInMultiPlatform = async (
     if (inBrowser) {
       return Promise.resolve(getRect(element))
     }
-    // 小程序下的逻辑
+    // 非H5下的逻辑
     return new Promise((resolve, reject) => {
       if (lru.has(element)) {
         resolve(lru.get(element) as Rect)
         return
       }
-      createSelectorQuery()
+      Taro.createSelectorQuery()
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {

@@ -6,7 +6,7 @@ import React, {
   ReactPortal,
 } from 'react'
 import { createPortal } from 'react-dom'
-import { CSSTransition } from 'react-transition-group'
+// import { CSSTransition } from 'react-transition-group'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { View, ITouchEvent } from '@tarojs/components'
@@ -185,34 +185,37 @@ export const Popup: FunctionComponent<
   const renderContent = () => {
     return (
       <>
-        <View
-          ref={refObject}
-          style={popStyles}
-          className={popClassName}
-          onClick={onClick}
-          catchMove={lockScroll}
-        >
-          {renderTitle()}
-          {showChildren ? children : null}
-        </View>
+        {innerVisible && (
+          <View
+            ref={refObject}
+            style={popStyles}
+            className={popClassName}
+            onClick={onClick}
+            catchMove={lockScroll}
+          >
+            {renderTitle()}
+            {showChildren ? children : null}
+          </View>
+        )}
       </>
     )
   }
   const renderPop = () => {
-    return (
-      <CSSTransition
-        nodeRef={refObject}
-        classNames={transitionName}
-        mountOnEnter
-        unmountOnExit={destroyOnClose}
-        timeout={duration}
-        in={innerVisible}
-        onEntered={afterShow}
-        onExited={afterClose}
-      >
-        {renderContent()}
-      </CSSTransition>
-    )
+    return renderContent()
+    // return (
+    //   <CSSTransition
+    //     nodeRef={refObject}
+    //     classNames={transitionName}
+    //     mountOnEnter
+    //     unmountOnExit={destroyOnClose}
+    //     timeout={duration}
+    //     in={innerVisible}
+    //     onEntered={afterShow}
+    //     onExited={afterClose}
+    //   >
+    //     {renderContent()}
+    //   </CSSTransition>
+    // )
   }
 
   const renderNode = () => {
