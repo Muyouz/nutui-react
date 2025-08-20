@@ -1,6 +1,8 @@
-import { BaseDialog, BaseContentProps } from './base'
+import { ReactNode } from 'react'
+import { JDBaseDialog, JDBaseContentProps } from './base'
 
-export interface WebContentProps extends BaseContentProps {
+export interface JDWebContentProps extends JDBaseContentProps {
+  header: ReactNode
   onClick: (event: MouseEvent) => void
 }
-export interface WebDialogProps extends BaseDialog {}
+export interface JDWebDialogProps extends JDBaseDialog {}

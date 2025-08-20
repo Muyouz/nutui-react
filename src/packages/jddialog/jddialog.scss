@@ -17,7 +17,7 @@
   border-radius: $dialog-border-radius;
   background: #ffffff;
 
-  &-newclose {
+  &-close {
     width: 32px;
     height: 32px;
     margin-top: 32px;
@@ -40,52 +40,6 @@
     align-items: center;
   }
 
-  &-close {
-    position: absolute !important;
-    z-index: 1;
-    cursor: pointer;
-    width: $dialog-close-width;
-    height: $dialog-close-height;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $dialog-close-color;
-    .nut-icon {
-      font-size: $dialog-close-width;
-      width: $dialog-close-width;
-      height: $dialog-close-height;
-    }
-
-    &-top-right {
-      top: $dialog-close-top;
-      right: $dialog-close-right;
-    }
-
-    &-top-left {
-      top: $dialog-close-top;
-      left: $dialog-close-left;
-    }
-
-    &-bottom {
-      bottom: -64px;
-      width: $dialog-bottom-close-icon-size;
-      height: $dialog-bottom-close-icon-size;
-      left: 50%;
-      transform: translateX(-50%);
-      .nut-icon {
-        color: $color-text-disabled;
-        background-color: $color-mask-part;
-        border-radius: 50%;
-        width: $dialog-bottom-close-icon-size;
-        height: $dialog-bottom-close-icon-size;
-      }
-    }
-
-    &:active {
-      opacity: 0.7;
-    }
-  }
-
   &-header {
     display: flex;
     flex-direction: row;
@@ -96,13 +50,24 @@
 
   &-title {
     text-align: center;
-    font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
-    color: $color-title;
+    color: #171a26;
+    font-family: PingFang-SC;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0px;
     @include oneline-ellipsis();
+
+    &-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+    }
   }
 
   &-subTitle {
+    margin-top: 8px;
     text-align: center;
     color: #828794;
     font-weight: 400;
@@ -113,6 +78,7 @@
   }
 
   &-description {
+    margin-top: 8px;
     font-family: PingFang-SC;
     font-weight: 400;
     font-size: 14px;
@@ -123,16 +89,9 @@
 
   &-content {
     width: 100%;
-    margin: $dialog-content-margin;
+    margin-top: 8px;
+    margin-bottom: 16px;
     max-height: $dialog-content-max-height;
-    line-height: $dialog-content-line-height;
-    font-size: $font-size-base;
-    color: $color-title;
-    word-wrap: break-word;
-    word-break: break-all;
-    white-space: pre-wrap;
-    text-align: $dialog-content-text-align;
-    overflow-y: auto;
   }
 
   &-footer {
@@ -186,18 +145,6 @@
     right: 50%;
     -webkit-transform: translate(50%, -50%);
     transform: translate(50%, -50%);
-  }
-
-  &-close {
-    &-top-right {
-      right: auto;
-      left: $dialog-close-right;
-    }
-
-    &-top-left {
-      left: auto;
-      right: $dialog-close-left;
-    }
   }
 
   &-footer {

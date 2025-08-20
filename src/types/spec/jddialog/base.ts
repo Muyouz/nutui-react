@@ -3,24 +3,22 @@ import type { MouseEvent, CSSProperties } from 'react'
 import { WebOverlayProps } from '@/types'
 import { BasicComponent } from '@/utils/typings'
 
-export type DialogConfigType = {
+export type JDDialogConfigType = {
   prefixCls?: string
   simple?: boolean
 }
 
-export type DialogCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
-export type DialogFooterDirection = 'horizontal' | 'vertical'
-export interface BaseContentProps extends BasicComponent {
+export type JDDialogCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
+export type JDDialogFooterDirection = 'horizontal' | 'vertical'
+export interface JDBaseContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
-  header: ReactNode
   footer: ReactNode
-  close: ReactNode
-  footerDirection: DialogFooterDirection
+  footerDirection: JDDialogFooterDirection
 }
-export interface DialogWrapProps
+export interface JDDialogWrapProps
   extends WebOverlayProps,
-    Omit<BaseContentProps, 'onClick'> {
+    Omit<JDBaseContentProps, 'onClick'> {
   visible: boolean
   overlay: boolean
   overlayStyle: CSSProperties
@@ -30,31 +28,27 @@ export interface DialogWrapProps
   onOverlayClick: (e: MouseEvent) => boolean | void
 }
 
-export interface BaseDialog extends DialogWrapProps {
+export interface JDBaseDialog extends JDDialogWrapProps {
   content: ReactNode
   confirmText: ReactNode
   cancelText: ReactNode
   hideConfirmButton: boolean
   hideCancelButton: boolean
-  disableConfirmButton: boolean
-  closeIconPosition: DialogCloseIconPosition
-  closeIcon: boolean | ReactNode
-  beforeClose: () => boolean
   beforeCancel: () => boolean
   onConfirm: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
 }
 
-export type DialogReturnProps = {
-  update: (newConfig: Partial<BaseDialog>) => void
+export type JDDialogReturnProps = {
+  update: (newConfig: Partial<JDBaseDialog>) => void
   close: () => void
 }
 
-export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<Partial<BaseDialog>>> {
-  confirm: (props: Partial<BaseDialog>) => DialogReturnProps
-  alert: (props: Partial<BaseDialog>) => DialogReturnProps
-  config: (config: DialogConfigType) => void
+export interface JDDialogComponent
+  extends ForwardRefExoticComponent<PropsWithChildren<Partial<JDBaseDialog>>> {
+  confirm: (props: Partial<JDBaseDialog>) => JDDialogReturnProps
+  alert: (props: Partial<JDBaseDialog>) => JDDialogReturnProps
+  config: (config: JDDialogConfigType) => void
   destroyAll: () => void
 }
 
-export const destroyList: Array<() => void> = []
+export const jdDestroyList: Array<() => void> = []

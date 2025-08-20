@@ -1,20 +1,13 @@
-import React, { FunctionComponent, useState, MouseEvent } from 'react'
-import classNames from 'classnames'
+import React, { FunctionComponent, MouseEvent } from 'react'
 // import { CSSTransition } from 'react-transition-group'
 import { View, ITouchEvent } from '@tarojs/components'
-import { Failure, Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { TaroDialogProps } from '@/types'
+import { JDTaroDialogProps } from '@/types'
 import { Content, defaultContentProps } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
-import {
-  customEvents,
-  useCustomEvent,
-  useCustomEventsPath,
-  useParams,
-} from '@/hooks/taro/use-custom-event'
+import { useParams } from '@/hooks/taro/use-custom-event'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
@@ -24,7 +17,6 @@ const defaultProps = {
   ...defaultContentProps,
   title: '',
   content: '',
-  header: '',
   footer: '',
   confirmText: '',
   cancelText: '',
@@ -34,26 +26,21 @@ const defaultProps = {
   description: '',
   hideConfirmButton: false,
   hideCancelButton: false,
-  disableConfirmButton: false,
   footerDirection: 'horizontal',
-  closeIconPosition: 'bottom',
-  closeIcon: false,
   overlay: true,
   overlayStyle: {},
   overlayClassName: 'nut-dialog-overlay',
   zIndex: 1200,
   beforeCancel: () => true,
-  beforeClose: () => true,
   onCancel: () => {},
   onClose: () => {},
   onConfirm: () => {},
   onOverlayClick: () => true,
 }
 
-export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
-  open: typeof open
-  close: typeof close
-} = (props) => {
+export const BaseDialog: FunctionComponent<Partial<JDTaroDialogProps>> = (
+  props
+) => {
   const {
     params: {
       id,
@@ -62,17 +49,13 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       cancelText,
       children,
       className,
-      closeIconPosition,
-      closeIcon,
       content,
-      disableConfirmButton,
       theme,
       titleIcon,
       subTitle,
       description,
       footer,
       footerDirection,
-      header,
       hideConfirmButton,
       hideCancelButton,
       lockScroll,
@@ -84,7 +67,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
       visible,
       zIndex,
       beforeCancel,
-      beforeClose,
       onClose,
       onCancel,
       onConfirm,
@@ -94,14 +76,7 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   } = useParams(mergeProps(defaultProps, props))
   const classPrefix = 'nut-dialog'
   const { locale } = useConfig()
-  const [loading, setLoading] = useState(false)
 
-  useCustomEvent(
-    id as string,
-    ({ status, options }: { status: boolean; options: any }) => {
-      setParams({ ...options, visible: status })
-    }
-  )
   const refObject = useLockScrollTaro(!!(visible && lockScroll))
   const renderFooter = () => {
     if (footer === null) return ''
@@ -114,13 +89,11 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
 
     const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
-      setLoading(true)
       try {
         await onConfirm?.(e)
-        setLoading(false)
         onClose()
       } catch {
-        setLoading(false)
+        onClose()
       }
     }
 
@@ -189,24 +162,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
     )
   }
 
-  const renderCloseIcon = () => {
-    if (!closeIcon) return null
-    const handleClose = () => {
-      if (!beforeClose?.()) return
-      onClose()
-    }
-    const closeClasses = classNames({
-      [`${classPrefix}-close`]: true,
-      [`${classPrefix}-close-${closeIconPosition}`]: true,
-    })
-    const systomIcon = closeIconPosition !== 'bottom' ? <Close /> : <Failure />
-    return (
-      <View className={closeClasses} onClick={handleClose}>
-        {React.isValidElement(closeIcon) ? closeIcon : systomIcon}
-      </View>
-    )
-  }
-
   const onHandleClickOverlay = (e: ITouchEvent) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
@@ -223,8 +178,6 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
         className={className}
         style={{ zIndex: contentZIndex, ...style }}
         title={title}
-        header={header}
-        close={renderCloseIcon()}
         footer={renderFooter()}
         footerDirection={footerDirection}
         visible={visible}
@@ -283,18 +236,4 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
   )
 }
 
-export function open(selector: string, options: Partial<typeof defaultProps>) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: true, options })
-}
-
-export function close(selector: string) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: false })
-}
-
 BaseDialog.displayName = 'NutDialog'
-BaseDialog.open = open
-BaseDialog.close = close
