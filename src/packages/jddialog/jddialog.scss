@@ -57,7 +57,9 @@
     font-size: 18px;
     line-height: 18px;
     letter-spacing: 0px;
-    @include oneline-ellipsis();
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &-icon {
       width: 18px;
