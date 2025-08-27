@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -8,7 +9,6 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
-import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
@@ -35,6 +35,8 @@ const defaultProps = {
   onClose: () => {},
 }
 
+const arrowIconBase64 =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABHNCSVQICAgIfAhkiAAAAOtJREFUSImt1CFPw0AchvHfsgRTNTMUph4Dpp9ifoqPMDR+agY+AB8FBQYNHk391MzMHRnN0t317k0qer30fXKX/zMzLUts0Ib3L7ziN/dHs4nlL2gG63s85kLMJ5RvsTjz7QodPgNMdYBYfj2ypwkQbzjUBtjiJmFfgzu8p0CkAmxwn7hXuKJFuI5igDVWGeUxcUK+SwDW4Zma20sQYwArPBSUn0L0+MkBaPFUoTymC6fQpwAssQtzXTMdPoaOGAKMiaY0Z0V1quIGzxdEUyN9GOu9wQnsEkVTmn+iigC5oinNn6jmBaIpTQtHYOclaG7VXRwAAAAASUVORK5CYII='
 const classPrefix = `nut-popover`
 export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
@@ -244,8 +246,8 @@ export const JDPopover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           id={popoverId}
-          onClick={() => {
-            props?.onClick?.()
+          onClick={(e) => {
+            props?.onClick?.(e)
             if (!visible) {
               onOpen?.()
             } else {
@@ -268,7 +270,14 @@ export const JDPopover: FunctionComponent<
           <View className="nut-popover-content-group" ref={popoverContentRef}>
             {showArrow && (
               <View className={popoverArrow()} style={popoverArrowStyle()}>
-                <ArrowRadius width={8} height={4} />
+                <View
+                  style={{
+                    width: '8px',
+                    height: '4px',
+                    backgroundSize: '100% 100%',
+                    backgroundImage: `url(${arrowIconBase64})`,
+                  }}
+                ></View>
               </View>
             )}
             {Array.isArray(children) ? children[1] : null}

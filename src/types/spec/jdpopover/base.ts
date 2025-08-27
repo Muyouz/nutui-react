@@ -32,7 +32,7 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     closeOnOutsideClick: boolean
     closeOnActionClick: boolean
     children?: ReactNode
-    onClick: () => void
+    onClick: (e?: any) => void
     onOpen: () => void
     onClose: () => void
     onSelect: (item: PopoverList, index: number) => void
