@@ -74,7 +74,7 @@ export const BaseDialog: FunctionComponent<Partial<JDTaroDialogProps>> = (
     },
     setParams,
   } = useParams(mergeProps(defaultProps, props))
-  const classPrefix = 'nut-dialog'
+  const classPrefix = 'jdtaro-dialog'
   const { locale } = useConfig()
 
   const refObject = useLockScrollTaro(!!(visible && lockScroll))
