@@ -8,6 +8,7 @@ export interface PopoverList {
   icon?: ReactNode
   disabled?: boolean
   className?: string
+  style?: React.CSSProperties
   action?: { icon?: ReactNode; onClick?: (e: any) => void }
 }
 

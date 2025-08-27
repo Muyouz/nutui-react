@@ -290,13 +290,11 @@ export const JDPopover: FunctionComponent<
             {list.map((item, index) => {
               return (
                 <View
-                  className={classNames(
-                    {
-                      [`${classPrefix}-item`]: true,
-                      [`${classPrefix}-item-disabled`]: item.disabled,
-                    },
-                    item.className
-                  )}
+                  className={classNames({
+                    [`${classPrefix}-item`]: true,
+                    [`${classPrefix}-item-disabled`]: item.disabled,
+                  })}
+                  style={{ ...(item.style || {}) }}
                   key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
