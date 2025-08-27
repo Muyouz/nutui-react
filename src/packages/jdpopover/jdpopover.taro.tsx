@@ -37,7 +37,7 @@ const defaultProps = {
 
 const arrowIconBase64 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABHNCSVQICAgIfAhkiAAAAOtJREFUSImt1CFPw0AchvHfsgRTNTMUph4Dpp9ifoqPMDR+agY+AB8FBQYNHk391MzMHRnN0t317k0qer30fXKX/zMzLUts0Ib3L7ziN/dHs4nlL2gG63s85kLMJ5RvsTjz7QodPgNMdYBYfj2ypwkQbzjUBtjiJmFfgzu8p0CkAmxwn7hXuKJFuI5igDVWGeUxcUK+SwDW4Zma20sQYwArPBSUn0L0+MkBaPFUoTymC6fQpwAssQtzXTMdPoaOGAKMiaY0Z0V1quIGzxdEUyN9GOu9wQnsEkVTmn+iigC5oinNn6jmBaIpTQtHYOclaG7VXRwAAAAASUVORK5CYII='
-const classPrefix = `nut-popover`
+const classPrefix = `jdtaro-popover`
 export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
@@ -130,7 +130,7 @@ export const JDPopover: FunctionComponent<
   )
 
   const popoverArrow = () => {
-    const prefixCls = 'nut-popover-arrow'
+    const prefixCls = `${classPrefix}-arrow`
     const direction = location.split('-')[0]
     if (location !== direction) {
       return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
@@ -246,7 +246,7 @@ export const JDPopover: FunctionComponent<
     <>
       {!targetId && (
         <View
-          className="nut-popover-wrapper"
+          className={`${classPrefix}-wrapper`}
           ref={popoverRef}
           id={popoverId}
           onClick={(e) => {
@@ -264,13 +264,16 @@ export const JDPopover: FunctionComponent<
       )}
       <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
         <Popup
-          className={`nut-popover-content nut-popover-content-${location}`}
+          className={`${classPrefix}-content ${classPrefix}-content-${location}`}
           position="none"
           overlay={overlay}
           visible={showPopup}
           {...rest}
         >
-          <View className="nut-popover-content-group" ref={popoverContentRef}>
+          <View
+            className={`${classPrefix}-content-group`}
+            ref={popoverContentRef}
+          >
             {showArrow && (
               <View className={popoverArrow()} style={popoverArrowStyle()}>
                 <View
@@ -289,8 +292,8 @@ export const JDPopover: FunctionComponent<
                 <View
                   className={classNames(
                     {
-                      'nut-popover-item': true,
-                      'nut-popover-item-disabled': item.disabled,
+                      [`${classPrefix}-item`]: true,
+                      [`${classPrefix}-item-disabled`]: item.disabled,
                     },
                     item.className
                   )}
@@ -298,12 +301,16 @@ export const JDPopover: FunctionComponent<
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon && (
-                    <View className="nut-popover-item-icon">{item.icon}</View>
+                    <View className={`${classPrefix}-item-icon`}>
+                      {item.icon}
+                    </View>
                   )}
-                  <Text className="nut-popover-item-name">{item.name}</Text>
+                  <Text className={`${classPrefix}-item-name`}>
+                    {item.name}
+                  </Text>
                   {item.action?.icon && (
                     <View
-                      className="nut-popover-item-action-icon"
+                      className={`${classPrefix}-item-action-icon`}
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}
@@ -316,7 +323,7 @@ export const JDPopover: FunctionComponent<
         </Popup>
         {showPopup && closeOnOutsideClick && (
           <View
-            className="nut-popover-content-bg"
+            className={`${classPrefix}-content-bg`}
             onClick={clickAway}
             onTouchMove={clickAway}
           />
@@ -326,4 +333,4 @@ export const JDPopover: FunctionComponent<
   )
 }
 
-JDPopover.displayName = 'NutPopover'
+JDPopover.displayName = 'JdTaroPopover'

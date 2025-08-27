@@ -1,5 +1,5 @@
 @import '../popup/popup.scss';
-.nut-popover {
+.jdtaro-popover {
   position: absolute;
   display: inline-block;
   word-break: normal;
@@ -33,12 +33,12 @@
       top: 50%;
       transform: rotate(90deg) translateY(-50%);
 
-      &.nut-popover-arrow-left-top {
+      &.jdtaro-popover-arrow-left-top {
         top: 16px;
         transform: rotate(90deg) translateY(-50%);
       }
 
-      &.nut-popover-arrow-left-bottom {
+      &.jdtaro-popover-arrow-left-bottom {
         top: auto;
         bottom: 16px;
         transform: rotate(90deg) translateY(-50%);
@@ -51,19 +51,19 @@
       top: 50%;
       transform: rotate(-90deg) translateX(-50%);
 
-      &.nut-popover-arrow-right-top {
+      &.jdtaro-popover-arrow-right-top {
         top: 16px;
         transform: rotate(-90deg) translateY(0%);
       }
 
-      &.nut-popover-arrow-right-bottom {
+      &.jdtaro-popover-arrow-right-bottom {
         bottom: 16px;
         transform: rotate(-90deg) translateY(0%);
       }
     }
   }
 
-  .nut-popover-content {
+  .jdtaro-popover-content {
     position: absolute;
     // background: $popover-content-background-color;
     border-radius: $popover-border-radius;
@@ -81,7 +81,7 @@
       background: rgba(0, 0, 0, 0.7);
     }
 
-    .nut-popover-item {
+    .jdtaro-popover-item {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -126,18 +126,18 @@
         margin-left: $spacing-base;
       }
 
-      &.nut-popover-item-disabled {
+      &.jdtaro-popover-item-disabled {
         color: $popover-disable-color;
         cursor: not-allowed;
       }
 
-      &.nut-popover-taroitem {
+      &.jdtaro-popover-taroitem {
         display: flex;
       }
     }
 
     &-top {
-      .nut-popover-arrow-top {
+      .jdtaro-popover-arrow-top {
         left: 50%;
         transform: translateX(-50%) rotate(180deg);
       }
@@ -145,7 +145,7 @@
 
     &-top-right {
       right: 0;
-      .nut-popover-arrow-top-right {
+      .jdtaro-popover-arrow-top-right {
         right: 16px;
         transform: rotate(180deg) translateX(0%);
       }
@@ -153,14 +153,14 @@
 
     &-top-left {
       left: 0;
-      .nut-popover-arrow-top-left {
+      .jdtaro-popover-arrow-top-left {
         left: 16px;
         transform: rotate(180deg) translateX(0%);
       }
     }
 
     &-bottom {
-      .nut-popover-arrow-bottom {
+      .jdtaro-popover-arrow-bottom {
         left: 50%;
         transform: translateX(-50%);
       }
@@ -168,7 +168,7 @@
 
     &-bottom-right {
       right: 0;
-      .nut-popover-arrow-bottom-right {
+      .jdtaro-popover-arrow-bottom-right {
         right: 16px;
         transform: translateX(0%);
       }
@@ -176,7 +176,7 @@
 
     &-bottom-left {
       left: 0;
-      .nut-popover-arrow-bottom-left {
+      .jdtaro-popover-arrow-bottom-left {
         left: 16px;
         transform: translateX(0%);
       }
@@ -200,20 +200,20 @@
   }
 }
 
-.nut-popover-dark {
+.jdtaro-popover-dark {
   color: $popover-content-background-color;
   background: transparent;
 
-  .nut-popover-arrow {
+  .jdtaro-popover-arrow {
     .nut-icon-ArrowRadius {
       color: $popover-text-color;
     }
   }
 
-  .nut-popover-content {
+  .jdtaro-popover-content {
     // background: $popover-text-color !important;
     color: $popover-content-background-color !important;
-    .nut-popover-item {
+    .jdtaro-popover-item {
       &-action-icon {
         color: rgba(255, 255, 255, 0.8);
       }
@@ -221,10 +221,10 @@
   }
 }
 
-[dir='rtl'] .nut-popover,
-.nut-rtl .nut-popover {
-  .nut-popover-content {
-    .nut-popover-item {
+[dir='rtl'] .jdtaro-popover,
+.nut-rtl .jdtaro-popover {
+  .jdtaro-popover-content {
+    .jdtaro-popover-item {
       &-name {
         margin-left: 0;
         margin-right: 4px;
@@ -235,7 +235,7 @@
       }
     }
     &-top {
-      .nut-popover-arrow-top {
+      .jdtaro-popover-arrow-top {
         left: auto;
         right: 50%;
         transform: translateX(50%);
@@ -245,7 +245,7 @@
       right: auto;
       left: 0;
 
-      .nut-popover-arrow-top-right {
+      .jdtaro-popover-arrow-top-right {
         right: auto;
         left: 16px;
       }
@@ -255,14 +255,14 @@
       left: auto;
       right: 0;
 
-      .nut-popover-arrow-top-left {
+      .jdtaro-popover-arrow-top-left {
         left: auto;
         right: 16px;
       }
     }
 
     &-bottom {
-      .nut-popover-arrow-bottom {
+      .jdtaro-popover-arrow-bottom {
         left: auto;
         right: 50%;
         transform: translateX(50%);
@@ -273,7 +273,7 @@
 
       left: 0;
 
-      .nut-popover-arrow-bottom-right {
+      .jdtaro-popover-arrow-bottom-right {
         right: auto;
         left: 16px;
       }
@@ -283,7 +283,7 @@
       left: auto;
       right: 0;
 
-      .nut-popover-arrow-bottom-left {
+      .jdtaro-popover-arrow-bottom-left {
         left: auto;
         right: 16px;
       }
@@ -291,21 +291,21 @@
   }
 }
 
-.nut-popover-enter-from,
-.nut-popover-leave-active {
+.jdtaro-popover-enter-from,
+.jdtaro-popover-leave-active {
   transform: scale(0.8);
   opacity: 0;
 }
 
-.nut-popover-enter-active {
+.jdtaro-popover-enter-active {
   transition-timing-function: ease-out;
 }
 
-.nut-popover-leave-active {
+.jdtaro-popover-leave-active {
   transition-timing-function: ease-in;
 }
 
-.nut-popover-content-bg {
+.jdtaro-popover-content-bg {
   position: fixed;
   height: 100%;
   width: 100%;
@@ -315,18 +315,18 @@
   z-index: 999;
 }
 
-[dir='rtl'] .nut-popover-content-bg,
-.nut-rtl .nut-popover-content-bg {
+[dir='rtl'] .jdtaro-popover-content-bg,
+.nut-rtl .jdtaro-popover-content-bg {
   left: auto;
   right: 0;
 }
 
-.nut-popover-wrapper {
+.jdtaro-popover-wrapper {
   display: inline-block;
 }
 
 // Taro
-.nut-popover-content-copy {
+.jdtrao-content-copy {
   position: absolute;
   top: -99999px;
 }
