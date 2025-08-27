@@ -139,8 +139,7 @@
     &-top {
       .nut-popover-arrow-top {
         left: 50%;
-        transform-origin: center left;
-        transform: rotate(180deg) translateX(-50%);
+        transform: translateX(-50%) rotate(180deg);
       }
     }
 
@@ -148,7 +147,6 @@
       right: 0;
       .nut-popover-arrow-top-right {
         right: 16px;
-        bottom: -3.5px;
         transform: rotate(180deg) translateX(0%);
       }
     }
@@ -157,7 +155,6 @@
       left: 0;
       .nut-popover-arrow-top-left {
         left: 16px;
-        bottom: -3.5px;
         transform: rotate(180deg) translateX(0%);
       }
     }

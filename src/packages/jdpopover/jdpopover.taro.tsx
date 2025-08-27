@@ -132,7 +132,10 @@ export const JDPopover: FunctionComponent<
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
     const direction = location.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    if (location !== direction) {
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    }
+    return `${prefixCls} ${prefixCls}-${direction}`
   }
 
   const getPopoverPosition = () => {
