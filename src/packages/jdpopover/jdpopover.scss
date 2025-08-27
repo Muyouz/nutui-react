@@ -41,7 +41,7 @@
       &.nut-popover-arrow-left-bottom {
         top: auto;
         bottom: 16px;
-        transform: rotate(90deg) translateY(0%);
+        transform: rotate(90deg) translateY(-50%);
       }
     }
 
@@ -49,7 +49,7 @@
       transform-origin: center top;
       left: -4px;
       top: 50%;
-      transform: rotate(-90deg) translateY(-50%);
+      transform: rotate(-90deg) translateX(-50%);
 
       &.nut-popover-arrow-right-top {
         top: 16px;
