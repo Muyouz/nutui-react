@@ -33,7 +33,7 @@ export const Content: FunctionComponent<
     description,
   } = { ...defaultContentProps, ...props }
 
-  const classPrefix = 'nut-dialog'
+  const classPrefix = 'jdtaro-dialog'
 
   const renderTitleHeader = () => {
     return (

@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -8,7 +9,6 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
-import { ArrowRadius } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
@@ -35,7 +35,9 @@ const defaultProps = {
   onClose: () => {},
 }
 
-const classPrefix = `nut-popover`
+const arrowIconBase64 =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABHNCSVQICAgIfAhkiAAAAOtJREFUSImt1CFPw0AchvHfsgRTNTMUph4Dpp9ifoqPMDR+agY+AB8FBQYNHk391MzMHRnN0t317k0qer30fXKX/zMzLUts0Ib3L7ziN/dHs4nlL2gG63s85kLMJ5RvsTjz7QodPgNMdYBYfj2ypwkQbzjUBtjiJmFfgzu8p0CkAmxwn7hXuKJFuI5igDVWGeUxcUK+SwDW4Zma20sQYwArPBSUn0L0+MkBaPFUoTymC6fQpwAssQtzXTMdPoaOGAKMiaY0Z0V1quIGzxdEUyN9GOu9wQnsEkVTmn+iigC5oinNn6jmBaIpTQtHYOclaG7VXRwAAAAASUVORK5CYII='
+const classPrefix = `jdtaro-popover`
 export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
@@ -128,9 +130,12 @@ export const JDPopover: FunctionComponent<
   )
 
   const popoverArrow = () => {
-    const prefixCls = 'nut-popover-arrow'
+    const prefixCls = `${classPrefix}-arrow`
     const direction = location.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    if (location !== direction) {
+      return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
+    }
+    return `${prefixCls} ${prefixCls}-${direction}`
   }
 
   const getPopoverPosition = () => {
@@ -241,11 +246,11 @@ export const JDPopover: FunctionComponent<
     <>
       {!targetId && (
         <View
-          className="nut-popover-wrapper"
+          className={`${classPrefix}-wrapper`}
           ref={popoverRef}
           id={popoverId}
-          onClick={() => {
-            props?.onClick?.()
+          onClick={(e) => {
+            props?.onClick?.(e)
             if (!visible) {
               onOpen?.()
             } else {
@@ -259,39 +264,51 @@ export const JDPopover: FunctionComponent<
       )}
       <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
         <Popup
-          className={`nut-popover-content nut-popover-content-${location}`}
+          className={`${classPrefix}-content ${classPrefix}-content-${location}`}
           position="none"
           overlay={overlay}
           visible={showPopup}
           {...rest}
         >
-          <View className="nut-popover-content-group" ref={popoverContentRef}>
+          <View
+            className={`${classPrefix}-content-group`}
+            ref={popoverContentRef}
+          >
             {showArrow && (
               <View className={popoverArrow()} style={popoverArrowStyle()}>
-                <ArrowRadius width={8} height={4} />
+                <View
+                  style={{
+                    width: '8px',
+                    height: '4px',
+                    backgroundSize: '100% 100%',
+                    backgroundImage: `url(${arrowIconBase64})`,
+                  }}
+                ></View>
               </View>
             )}
             {Array.isArray(children) ? children[1] : null}
             {list.map((item, index) => {
               return (
                 <View
-                  className={classNames(
-                    {
-                      'nut-popover-item': true,
-                      'nut-popover-item-disabled': item.disabled,
-                    },
-                    item.className
-                  )}
+                  className={classNames({
+                    [`${classPrefix}-item`]: true,
+                    [`${classPrefix}-item-disabled`]: item.disabled,
+                  })}
+                  style={{ ...(item.style || {}) }}
                   key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon && (
-                    <View className="nut-popover-item-icon">{item.icon}</View>
+                    <View className={`${classPrefix}-item-icon`}>
+                      {item.icon}
+                    </View>
                   )}
-                  <Text className="nut-popover-item-name">{item.name}</Text>
+                  <Text className={`${classPrefix}-item-name`}>
+                    {item.name}
+                  </Text>
                   {item.action?.icon && (
                     <View
-                      className="nut-popover-item-action-icon"
+                      className={`${classPrefix}-item-action-icon`}
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}
@@ -304,7 +321,7 @@ export const JDPopover: FunctionComponent<
         </Popup>
         {showPopup && closeOnOutsideClick && (
           <View
-            className="nut-popover-content-bg"
+            className={`${classPrefix}-content-bg`}
             onClick={clickAway}
             onTouchMove={clickAway}
           />
@@ -314,4 +331,4 @@ export const JDPopover: FunctionComponent<
   )
 }
 
-JDPopover.displayName = 'NutPopover'
+JDPopover.displayName = 'JdTaroPopover'
