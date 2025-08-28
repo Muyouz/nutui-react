@@ -294,22 +294,29 @@ export const JDPopover: FunctionComponent<
                     [`${classPrefix}-item`]: true,
                     [`${classPrefix}-item-disabled`]: item.disabled,
                   })}
-                  style={{ ...(item.style || {}) }}
+                  style={{ ...(item?.style || {}) }}
                   key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon && (
-                    <View className={`${classPrefix}-item-icon`}>
+                    <View
+                      className={`${classPrefix}-item-icon`}
+                      style={{ ...(item?.iconStyle || {}) }}
+                    >
                       {item.icon}
                     </View>
                   )}
-                  <Text className={`${classPrefix}-item-name`}>
+                  <Text
+                    className={`${classPrefix}-item-name`}
+                    style={{ ...(item?.nameStyle || {}) }}
+                  >
                     {item.name}
                   </Text>
                   {item.action?.icon && (
                     <View
                       className={`${classPrefix}-item-action-icon`}
                       onClick={(e) => item.action?.onClick?.(e)}
+                      style={{ ...(item?.action?.style || {}) }}
                     >
                       {item.action.icon}
                     </View>
