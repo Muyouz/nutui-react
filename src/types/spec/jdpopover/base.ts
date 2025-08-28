@@ -43,4 +43,5 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     onOpen: () => void
     onClose: () => void
     onSelect: (item: PopoverList, index: number) => void
+    areaOffset: number[] // [x, y] jdtaro-popover定位元素的偏移量，默认[0, 0]
   }
