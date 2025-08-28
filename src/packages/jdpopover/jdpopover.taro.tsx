@@ -24,6 +24,7 @@ const defaultProps = {
   location: 'bottom',
   visible: false,
   offset: [0, 8],
+  areaOffset: [0, 0],
   arrowOffset: 0,
   targetId: '',
   showArrow: true,
@@ -62,6 +63,7 @@ export const JDPopover: FunctionComponent<
     onOpen,
     onClose,
     onSelect,
+    areaOffset,
     ...rest
   } = {
     ...defaultProps,
@@ -158,7 +160,7 @@ export const JDPopover: FunctionComponent<
       const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h = direction === 'bottom' ? height + cross : -(popHeight + cross)
-        styles.top = pxTransform(top + h)
+        styles.top = pxTransform(top + h + areaOffset[1])
 
         if (!skew) {
           styles[dir] = pxTransform(
@@ -166,28 +168,28 @@ export const JDPopover: FunctionComponent<
           )
         }
         if (skew === 'left') {
-          styles.left = pxTransform(left + parallel)
+          styles.left = pxTransform(left + parallel + areaOffset[0])
         }
         if (skew === 'right') {
           // styles.left = pxTransform(right - popWidth + parallel)
           // TODO: 能实现效果，但有点奇怪，怀疑是鸿蒙css的bug
-          styles.left = pxTransform(right - parallel)
+          styles.left = pxTransform(right - parallel + areaOffset[0])
         }
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
           direction === 'left' ? -(popWidth + cross) : width + cross
-        styles.left = pxTransform(left + contentW)
+        styles.left = pxTransform(left + contentW + areaOffset[0])
         if (!skew) {
           styles.top = pxTransform(
-            top - popHeight / 2 + height / 2 - 4 + parallel
+            top - popHeight / 2 + height / 2 - 4 + parallel + areaOffset[1]
           )
         }
         if (skew === 'top') {
-          styles.top = pxTransform(top + parallel)
+          styles.top = pxTransform(top + parallel + areaOffset[1])
         }
         if (skew === 'bottom') {
-          styles.top = pxTransform(top + height + parallel)
+          styles.top = pxTransform(top + height + parallel + areaOffset[1])
         }
       }
     }
