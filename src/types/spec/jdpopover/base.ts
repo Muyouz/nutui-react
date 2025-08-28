@@ -8,8 +8,14 @@ export interface PopoverList {
   icon?: ReactNode
   disabled?: boolean
   className?: string
-  style?: React.CSSProperties
-  action?: { icon?: ReactNode; onClick?: (e: any) => void }
+  style?: React.CSSProperties // item style
+  iconStyle?: React.CSSProperties // icon style
+  nameStyle?: React.CSSProperties // name style
+  action?: {
+    icon?: ReactNode
+    onClick?: (e: any) => void
+    style?: React.CSSProperties
+  } // action-icon style
 }
 
 export interface WrapperPosition {
