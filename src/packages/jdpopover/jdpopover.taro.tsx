@@ -77,7 +77,7 @@ export const JDPopover: FunctionComponent<
   const [popHeight, setPopHeight] = useState(0)
   const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   const uid = useUuid()
-  const popoverId = `popover-${uid}`
+  const popoverId = `jdtaro-popover-${uid}`
 
   useEffect(() => {
     const getWrapperPosition = async () => {
