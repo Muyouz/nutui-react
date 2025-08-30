@@ -143,7 +143,7 @@ export const JDPopover: FunctionComponent<
   const getPopoverPosition = () => {
     const styles: CSSProperties = {}
     if (!wrapperPosition) {
-      styles.visibility = 'hidden'
+      // styles.visibility = 'hidden'
       return styles
     }
     const { width, height, left, top, right } = wrapperPosition
@@ -194,7 +194,7 @@ export const JDPopover: FunctionComponent<
       }
     }
 
-    styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
+    // styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
     return styles
   }
 
@@ -264,78 +264,80 @@ export const JDPopover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
-      <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
-        <Popup
-          className={`${classPrefix}-content ${classPrefix}-content-${location}`}
-          position="none"
-          overlay={overlay}
-          visible={showPopup}
-          {...rest}
-        >
-          <View
-            className={`${classPrefix}-content-group`}
-            ref={popoverContentRef}
+      {showPopup && wrapperPosition && (
+        <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
+          <Popup
+            className={`${classPrefix}-content ${classPrefix}-content-${location}`}
+            position="none"
+            overlay={overlay}
+            visible={showPopup}
+            {...rest}
           >
-            {showArrow && (
-              <View className={popoverArrow()} style={popoverArrowStyle()}>
-                <View
-                  style={{
-                    width: '8px',
-                    height: '4px',
-                    backgroundSize: '100% 100%',
-                    backgroundImage: `url(${arrowIconBase64})`,
-                  }}
-                ></View>
-              </View>
-            )}
-            {Array.isArray(children) ? children[1] : null}
-            {list.map((item, index) => {
-              return (
-                <View
-                  className={classNames({
-                    [`${classPrefix}-item`]: true,
-                    [`${classPrefix}-item-disabled`]: item.disabled,
-                  })}
-                  style={{ ...(item?.style || {}) }}
-                  key={item.key || index}
-                  onClick={() => handleSelect(item, index)}
-                >
-                  {item.icon && (
-                    <View
-                      className={`${classPrefix}-item-icon`}
-                      style={{ ...(item?.iconStyle || {}) }}
-                    >
-                      {item.icon}
-                    </View>
-                  )}
-                  <Text
-                    className={`${classPrefix}-item-name`}
-                    style={{ ...(item?.nameStyle || {}) }}
-                  >
-                    {item.name}
-                  </Text>
-                  {item.action?.icon && (
-                    <View
-                      className={`${classPrefix}-item-action-icon`}
-                      onClick={(e) => item.action?.onClick?.(e)}
-                      style={{ ...(item?.action?.style || {}) }}
-                    >
-                      {item.action.icon}
-                    </View>
-                  )}
+            <View
+              className={`${classPrefix}-content-group`}
+              ref={popoverContentRef}
+            >
+              {showArrow && (
+                <View className={popoverArrow()} style={popoverArrowStyle()}>
+                  <View
+                    style={{
+                      width: '8px',
+                      height: '4px',
+                      backgroundSize: '100% 100%',
+                      backgroundImage: `url(${arrowIconBase64})`,
+                    }}
+                  ></View>
                 </View>
-              )
-            })}
-          </View>
-        </Popup>
-        {showPopup && closeOnOutsideClick && (
-          <View
-            className={`${classPrefix}-content-bg`}
-            onClick={clickAway}
-            onTouchMove={clickAway}
-          />
-        )}
-      </View>
+              )}
+              {Array.isArray(children) ? children[1] : null}
+              {list.map((item, index) => {
+                return (
+                  <View
+                    className={classNames({
+                      [`${classPrefix}-item`]: true,
+                      [`${classPrefix}-item-disabled`]: item.disabled,
+                    })}
+                    style={{ ...(item?.style || {}) }}
+                    key={item.key || index}
+                    onClick={() => handleSelect(item, index)}
+                  >
+                    {item.icon && (
+                      <View
+                        className={`${classPrefix}-item-icon`}
+                        style={{ ...(item?.iconStyle || {}) }}
+                      >
+                        {item.icon}
+                      </View>
+                    )}
+                    <Text
+                      className={`${classPrefix}-item-name`}
+                      style={{ ...(item?.nameStyle || {}) }}
+                    >
+                      {item.name}
+                    </Text>
+                    {item.action?.icon && (
+                      <View
+                        className={`${classPrefix}-item-action-icon`}
+                        onClick={(e) => item.action?.onClick?.(e)}
+                        style={{ ...(item?.action?.style || {}) }}
+                      >
+                        {item.action.icon}
+                      </View>
+                    )}
+                  </View>
+                )
+              })}
+            </View>
+          </Popup>
+        </View>
+      )}
+      {showPopup && closeOnOutsideClick && (
+        <View
+          className={`${classPrefix}-content-bg`}
+          onClick={clickAway}
+          onTouchMove={clickAway}
+        />
+      )}
     </>
   )
 }
