@@ -1,4 +1,7 @@
 /* eslint-disable react/self-closing-comp */
+import { Text, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import classNames from 'classnames'
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -6,21 +9,18 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import classNames from 'classnames'
-import Taro from '@tarojs/taro'
-import { Text, View } from '@tarojs/components'
-import Popup from '@/packages/popup/index.taro'
-import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
-import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider/index.taro'
-import {
-  TaroPopoverProps,
-  PopoverList,
-  WrapperPosition,
-  ClickType,
-} from '@/types'
-import { pxTransform } from '@/utils/taro/px-transform'
 import { useUuid } from '@/hooks/use-uuid'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import Popup from '@/packages/popup/index.taro'
+import {
+  ClickType,
+  PopoverList,
+  TaroPopoverProps,
+  WrapperPosition,
+} from '@/types'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { ComponentDefaults } from '@/utils/typings'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -39,6 +39,7 @@ const defaultProps = {
   onClick: () => {},
   onOpen: () => {},
   onClose: () => {},
+  useCachePosition: true,
 }
 
 const arrowIconBase64 =
@@ -69,6 +70,7 @@ export const JDPopover: FunctionComponent<
     onClose,
     onSelect,
     areaOffset,
+    useCachePosition,
     ...rest
   } = {
     ...defaultProps,
@@ -83,6 +85,7 @@ export const JDPopover: FunctionComponent<
   const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   const uid = useUuid()
   const popoverId = `jdtaro-popover-${uid}`
+  const popoverContentId = `jdtaro-popover-content-${uid}`
 
   useEffect(() => {
     const getWrapperPosition = async () => {
@@ -90,9 +93,14 @@ export const JDPopover: FunctionComponent<
         const rect = targetId
           ? await getRectInMultiPlatform(
               document.querySelector(`#${targetId}`),
-              targetId
+              targetId,
+              useCachePosition
             )
-          : await getRectInMultiPlatform(popoverRef.current, popoverId)
+          : await getRectInMultiPlatform(
+              popoverRef.current,
+              popoverId,
+              useCachePosition
+            )
         const { width, height, right, left, top } = rect
         setWrapperPosition({
           width,
@@ -105,21 +113,26 @@ export const JDPopover: FunctionComponent<
       })
     }
 
+    const getPopoverContentW = async () => {
+      Taro.nextTick(async () => {
+        const rectContent = await getRectInMultiPlatform(
+          popoverContentRef.current,
+          popoverContentId,
+          useCachePosition
+        )
+        setPopWidth(rectContent.width)
+        setPopHeight(rectContent.height)
+      })
+    }
+
     setShowPopup(visible)
     if (visible) {
       getWrapperPosition()
+    } else if (!useCachePosition) {
+      // 不使用缓存位置信息时，关闭jdpopover时清空位置信息
+      setWrapperPosition(undefined)
     }
-  }, [visible, targetId, rtl, popoverId])
-
-  const getPopoverContentW = async () => {
-    Taro.nextTick(async () => {
-      const rectContent = await getRectInMultiPlatform(
-        popoverContentRef.current
-      )
-      setPopWidth(rectContent.width)
-      setPopHeight(rectContent.height)
-    })
-  }
+  }, [visible, targetId, rtl, popoverId, popoverContentId, useCachePosition])
 
   const clickAway = (e: any) => {
     if (closeOnOutsideClick) {
@@ -280,6 +293,7 @@ export const JDPopover: FunctionComponent<
           >
             <View
               className={`${classPrefix}-content-group`}
+              id={popoverContentId}
               ref={popoverContentRef}
             >
               {showArrow && (

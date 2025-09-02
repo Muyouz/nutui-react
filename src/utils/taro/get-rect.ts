@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
-import { MiniLru } from '@/utils/lru'
 import { getRect, inBrowser } from '@/utils/get-rect'
+import { MiniLru } from '@/utils/lru'
 
 const lru = new MiniLru(10)
 
@@ -28,7 +28,8 @@ export function makeRect(width: number, height: number) {
 
 export const getRectInMultiPlatform = async (
   element: any,
-  harmonyId = ''
+  harmonyId = '',
+  useCache = true
 ): Promise<Rect> => {
   if (element) {
     if (inBrowser) {
@@ -36,7 +37,8 @@ export const getRectInMultiPlatform = async (
     }
     // 非H5下的逻辑
     return new Promise((resolve, reject) => {
-      if (lru.has(element)) {
+      // 当 useCache 为 false 时，跳过缓存逻辑
+      if (useCache && lru.has(element)) {
         resolve(lru.get(element) as Rect)
         return
       }
@@ -45,7 +47,10 @@ export const getRectInMultiPlatform = async (
         .boundingClientRect()
         .exec(([rects]) => {
           if (rects) {
-            lru.set(element, rects)
+            // 只有当 useCache 为 true 时才存入缓存
+            if (useCache) {
+              lru.set(element, rects)
+            }
           }
           resolve(rects)
         })
