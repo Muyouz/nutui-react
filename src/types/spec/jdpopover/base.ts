@@ -26,6 +26,11 @@ export interface WrapperPosition {
   right: number
 }
 
+export enum ClickType {
+  Target = 'target',
+  Outside = 'outside',
+}
+
 export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
   BaseProps & {
     theme: UITheme
@@ -39,7 +44,7 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     closeOnOutsideClick: boolean
     closeOnActionClick: boolean
     children?: ReactNode
-    onClick: (e?: any) => void
+    onClick: (e?: any, type?: ClickType) => void
     onOpen: () => void
     onClose: () => void
     onSelect: (item: PopoverList, index: number) => void

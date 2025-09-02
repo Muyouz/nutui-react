@@ -13,7 +13,12 @@ import Popup from '@/packages/popup/index.taro'
 import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPopoverProps, PopoverList, WrapperPosition } from '@/types'
+import {
+  TaroPopoverProps,
+  PopoverList,
+  WrapperPosition,
+  ClickType,
+} from '@/types'
 import { pxTransform } from '@/utils/taro/px-transform'
 import { useUuid } from '@/hooks/use-uuid'
 
@@ -116,9 +121,9 @@ export const JDPopover: FunctionComponent<
     })
   }
 
-  const clickAway = () => {
+  const clickAway = (e: any) => {
     if (closeOnOutsideClick) {
-      onClick?.()
+      onClick?.(e, ClickType.Outside)
       onClose?.()
     }
   }
@@ -252,7 +257,7 @@ export const JDPopover: FunctionComponent<
           ref={popoverRef}
           id={popoverId}
           onClick={(e) => {
-            props?.onClick?.(e)
+            props?.onClick?.(e, ClickType.Target)
             if (!visible) {
               onOpen?.()
             } else {
