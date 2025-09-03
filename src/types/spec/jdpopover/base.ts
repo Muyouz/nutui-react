@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '../../base/props'
 import { FullPosition, SimpleValues, UITheme } from '../../base/atoms'
+import { BaseProps } from '../../base/props'
 
 export interface PopoverList {
   key?: string
@@ -26,6 +26,11 @@ export interface WrapperPosition {
   right: number
 }
 
+export enum ClickType {
+  Target = 'target',
+  Outside = 'outside',
+}
+
 export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
   BaseProps & {
     theme: UITheme
@@ -39,9 +44,11 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     closeOnOutsideClick: boolean
     closeOnActionClick: boolean
     children?: ReactNode
-    onClick: (e?: any) => void
+    onClick: (e?: any, type?: ClickType) => void
     onOpen: () => void
     onClose: () => void
     onSelect: (item: PopoverList, index: number) => void
     areaOffset: number[] // [x, y] jdtaro-popover定位元素的偏移量，默认[0, 0]
+    useCachePosition?: boolean // 是否缓存位置信息
+    contentStyle?: React.CSSProperties // 内容区样式
   }

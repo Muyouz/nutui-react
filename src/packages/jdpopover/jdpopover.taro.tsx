@@ -1,4 +1,7 @@
 /* eslint-disable react/self-closing-comp */
+import { Text, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import classNames from 'classnames'
 import React, {
   CSSProperties,
   FunctionComponent,
@@ -6,16 +9,18 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import classNames from 'classnames'
-import Taro from '@tarojs/taro'
-import { Text, View } from '@tarojs/components'
-import Popup from '@/packages/popup/index.taro'
-import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
-import { ComponentDefaults } from '@/utils/typings'
-import { useRtl } from '@/packages/configprovider/index.taro'
-import { TaroPopoverProps, PopoverList, WrapperPosition } from '@/types'
-import { pxTransform } from '@/utils/taro/px-transform'
 import { useUuid } from '@/hooks/use-uuid'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import Popup from '@/packages/popup/index.taro'
+import {
+  ClickType,
+  PopoverList,
+  TaroPopoverProps,
+  WrapperPosition,
+} from '@/types'
+import { getRectInMultiPlatform } from '@/utils/taro/get-rect'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { ComponentDefaults } from '@/utils/typings'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -34,6 +39,8 @@ const defaultProps = {
   onClick: () => {},
   onOpen: () => {},
   onClose: () => {},
+  useCachePosition: true,
+  contentStyle: {},
 }
 
 const arrowIconBase64 =
@@ -64,6 +71,8 @@ export const JDPopover: FunctionComponent<
     onClose,
     onSelect,
     areaOffset,
+    useCachePosition,
+    contentStyle,
     ...rest
   } = {
     ...defaultProps,
@@ -77,7 +86,8 @@ export const JDPopover: FunctionComponent<
   const [popHeight, setPopHeight] = useState(0)
   const [wrapperPosition, setWrapperPosition] = useState<WrapperPosition>()
   const uid = useUuid()
-  const popoverId = `popover-${uid}`
+  const popoverId = `jdtaro-popover-${uid}`
+  const popoverContentId = `jdtaro-popover-content-${uid}`
 
   useEffect(() => {
     const getWrapperPosition = async () => {
@@ -85,9 +95,14 @@ export const JDPopover: FunctionComponent<
         const rect = targetId
           ? await getRectInMultiPlatform(
               document.querySelector(`#${targetId}`),
-              targetId
+              targetId,
+              useCachePosition
             )
-          : await getRectInMultiPlatform(popoverRef.current, popoverId)
+          : await getRectInMultiPlatform(
+              popoverRef.current,
+              popoverId,
+              useCachePosition
+            )
         const { width, height, right, left, top } = rect
         setWrapperPosition({
           width,
@@ -100,25 +115,30 @@ export const JDPopover: FunctionComponent<
       })
     }
 
+    const getPopoverContentW = async () => {
+      Taro.nextTick(async () => {
+        const rectContent = await getRectInMultiPlatform(
+          popoverContentRef.current,
+          popoverContentId,
+          useCachePosition
+        )
+        setPopWidth(rectContent.width)
+        setPopHeight(rectContent.height)
+      })
+    }
+
     setShowPopup(visible)
     if (visible) {
       getWrapperPosition()
+    } else if (!useCachePosition) {
+      // 不使用缓存位置信息时，关闭jdpopover时清空位置信息
+      setWrapperPosition(undefined)
     }
-  }, [visible, targetId, rtl, popoverId])
+  }, [visible, targetId, rtl, popoverId, popoverContentId, useCachePosition])
 
-  const getPopoverContentW = async () => {
-    Taro.nextTick(async () => {
-      const rectContent = await getRectInMultiPlatform(
-        popoverContentRef.current
-      )
-      setPopWidth(rectContent.width)
-      setPopHeight(rectContent.height)
-    })
-  }
-
-  const clickAway = () => {
+  const clickAway = (e: any) => {
     if (closeOnOutsideClick) {
-      onClick?.()
+      onClick?.(e, ClickType.Outside)
       onClose?.()
     }
   }
@@ -143,14 +163,16 @@ export const JDPopover: FunctionComponent<
   const getPopoverPosition = () => {
     const styles: CSSProperties = {}
     if (!wrapperPosition) {
-      styles.visibility = 'hidden'
+      // styles.visibility = 'hidden'
       return styles
     }
     const { width, height, left, top, right } = wrapperPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
-    let cross = 0
-    let parallel = 0
+
+    let cross = 0 // 沿着弹出方向的偏移量
+    let parallel = 0 // 垂直弹出方向的偏移量
+
     if (Array.isArray(offset) && offset.length === 2) {
       const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
@@ -194,7 +216,7 @@ export const JDPopover: FunctionComponent<
       }
     }
 
-    styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
+    // styles.visibility = popWidth === 0 ? 'hidden' : 'initial'
     return styles
   }
 
@@ -252,7 +274,7 @@ export const JDPopover: FunctionComponent<
           ref={popoverRef}
           id={popoverId}
           onClick={(e) => {
-            props?.onClick?.(e)
+            props?.onClick?.(e, ClickType.Target)
             if (!visible) {
               onOpen?.()
             } else {
@@ -264,78 +286,82 @@ export const JDPopover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
-      <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
-        <Popup
-          className={`${classPrefix}-content ${classPrefix}-content-${location}`}
-          position="none"
-          overlay={overlay}
-          visible={showPopup}
-          {...rest}
-        >
-          <View
-            className={`${classPrefix}-content-group`}
-            ref={popoverContentRef}
+      {showPopup && wrapperPosition && (
+        <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
+          <Popup
+            className={`${classPrefix}-content ${classPrefix}-content-${location}`}
+            position="none"
+            overlay={overlay}
+            visible={showPopup}
+            {...rest}
           >
-            {showArrow && (
-              <View className={popoverArrow()} style={popoverArrowStyle()}>
-                <View
-                  style={{
-                    width: '8px',
-                    height: '4px',
-                    backgroundSize: '100% 100%',
-                    backgroundImage: `url(${arrowIconBase64})`,
-                  }}
-                ></View>
-              </View>
-            )}
-            {Array.isArray(children) ? children[1] : null}
-            {list.map((item, index) => {
-              return (
-                <View
-                  className={classNames({
-                    [`${classPrefix}-item`]: true,
-                    [`${classPrefix}-item-disabled`]: item.disabled,
-                  })}
-                  style={{ ...(item?.style || {}) }}
-                  key={item.key || index}
-                  onClick={() => handleSelect(item, index)}
-                >
-                  {item.icon && (
-                    <View
-                      className={`${classPrefix}-item-icon`}
-                      style={{ ...(item?.iconStyle || {}) }}
-                    >
-                      {item.icon}
-                    </View>
-                  )}
-                  <Text
-                    className={`${classPrefix}-item-name`}
-                    style={{ ...(item?.nameStyle || {}) }}
-                  >
-                    {item.name}
-                  </Text>
-                  {item.action?.icon && (
-                    <View
-                      className={`${classPrefix}-item-action-icon`}
-                      onClick={(e) => item.action?.onClick?.(e)}
-                      style={{ ...(item?.action?.style || {}) }}
-                    >
-                      {item.action.icon}
-                    </View>
-                  )}
+            <View
+              className={`${classPrefix}-content-group`}
+              id={popoverContentId}
+              ref={popoverContentRef}
+              style={{ ...(contentStyle || {}) }}
+            >
+              {showArrow && (
+                <View className={popoverArrow()} style={popoverArrowStyle()}>
+                  <View
+                    style={{
+                      width: '8px',
+                      height: '4px',
+                      backgroundSize: '100% 100%',
+                      backgroundImage: `url(${arrowIconBase64})`,
+                    }}
+                  ></View>
                 </View>
-              )
-            })}
-          </View>
-        </Popup>
-        {showPopup && closeOnOutsideClick && (
-          <View
-            className={`${classPrefix}-content-bg`}
-            onClick={clickAway}
-            onTouchMove={clickAway}
-          />
-        )}
-      </View>
+              )}
+              {Array.isArray(children) ? children[1] : null}
+              {list.map((item, index) => {
+                return (
+                  <View
+                    className={classNames({
+                      [`${classPrefix}-item`]: true,
+                      [`${classPrefix}-item-disabled`]: item.disabled,
+                    })}
+                    style={{ ...(item?.style || {}) }}
+                    key={item.key || index}
+                    onClick={() => handleSelect(item, index)}
+                  >
+                    {item.icon && (
+                      <View
+                        className={`${classPrefix}-item-icon`}
+                        style={{ ...(item?.iconStyle || {}) }}
+                      >
+                        {item.icon}
+                      </View>
+                    )}
+                    <Text
+                      className={`${classPrefix}-item-name`}
+                      style={{ ...(item?.nameStyle || {}) }}
+                    >
+                      {item.name}
+                    </Text>
+                    {item.action?.icon && (
+                      <View
+                        className={`${classPrefix}-item-action-icon`}
+                        onClick={(e) => item.action?.onClick?.(e)}
+                        style={{ ...(item?.action?.style || {}) }}
+                      >
+                        {item.action.icon}
+                      </View>
+                    )}
+                  </View>
+                )
+              })}
+            </View>
+          </Popup>
+        </View>
+      )}
+      {showPopup && closeOnOutsideClick && (
+        <View
+          className={`${classPrefix}-content-bg`}
+          onClick={clickAway}
+          onTouchMove={clickAway}
+        />
+      )}
     </>
   )
 }

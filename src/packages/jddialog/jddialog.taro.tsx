@@ -1,16 +1,15 @@
 import React, { FunctionComponent, MouseEvent } from 'react'
 // import { CSSTransition } from 'react-transition-group'
-import { View, ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
+import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
 import Button from '@/packages/button/index.taro'
-import { JDTaroDialogProps } from '@/types'
-import { Content, defaultContentProps } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
-import { useParams } from '@/hooks/taro/use-custom-event'
-import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
+import { JDTaroDialogProps } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
+import { Content, defaultContentProps } from './content.taro'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -42,38 +41,35 @@ export const BaseDialog: FunctionComponent<Partial<JDTaroDialogProps>> = (
   props
 ) => {
   const {
-    params: {
-      id,
-      closeOnOverlayClick,
-      confirmText,
-      cancelText,
-      children,
-      className,
-      content,
-      theme,
-      titleIcon,
-      subTitle,
-      description,
-      footer,
-      footerDirection,
-      hideConfirmButton,
-      hideCancelButton,
-      lockScroll,
-      overlay,
-      overlayStyle,
-      overlayClassName,
-      style,
-      title,
-      visible,
-      zIndex,
-      beforeCancel,
-      onClose,
-      onCancel,
-      onConfirm,
-      onOverlayClick,
-    },
-    setParams,
-  } = useParams(mergeProps(defaultProps, props))
+    id,
+    closeOnOverlayClick,
+    confirmText,
+    cancelText,
+    children,
+    className,
+    content,
+    theme,
+    titleIcon,
+    subTitle,
+    description,
+    footer,
+    footerDirection,
+    hideConfirmButton,
+    hideCancelButton,
+    lockScroll,
+    overlay,
+    overlayStyle,
+    overlayClassName,
+    style,
+    title,
+    visible,
+    zIndex,
+    beforeCancel,
+    onClose,
+    onCancel,
+    onConfirm,
+    onOverlayClick,
+  } = mergeProps(defaultProps, props)
   const classPrefix = 'jdtaro-dialog'
   const { locale } = useConfig()
 
