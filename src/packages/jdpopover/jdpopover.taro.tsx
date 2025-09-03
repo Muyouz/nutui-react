@@ -169,8 +169,8 @@ export const JDPopover: FunctionComponent<
     const { width, height, left, top, right } = wrapperPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
-    let cross = 0
-    let parallel = 0
+    let cross = 0 // 沿着弹出方向的偏移量
+    let parallel = 0 // 垂直弹出方向的偏移量
     if (Array.isArray(offset) && offset.length === 2) {
       const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
