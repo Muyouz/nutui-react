@@ -43,8 +43,10 @@ const defaultProps = {
   contentStyle: {},
 }
 
-const arrowIconBase64 =
+const arrowIconDarkBase64 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABHNCSVQICAgIfAhkiAAAAOtJREFUSImt1CFPw0AchvHfsgRTNTMUph4Dpp9ifoqPMDR+agY+AB8FBQYNHk391MzMHRnN0t317k0qer30fXKX/zMzLUts0Ib3L7ziN/dHs4nlL2gG63s85kLMJ5RvsTjz7QodPgNMdYBYfj2ypwkQbzjUBtjiJmFfgzu8p0CkAmxwn7hXuKJFuI5igDVWGeUxcUK+SwDW4Zma20sQYwArPBSUn0L0+MkBaPFUoTymC6fQpwAssQtzXTMdPoaOGAKMiaY0Z0V1quIGzxdEUyN9GOu9wQnsEkVTmn+iigC5oinNn6jmBaIpTQtHYOclaG7VXRwAAAAASUVORK5CYII='
+const arrowIconLightBase64 =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAABHNCSVQICAgIfAhkiAAAALpJREFUSInF1EENg0AURdE7pAKQgATqoE6Kg0pAQiUgoRKQgARwQB28Ljo/IaFNh2GG3oQVCedveBCRpEpSL2n2z0NSFfOtWHzWujn7ER4fP+DWmO2IAHx5RJnjgCEAt4akR0jqNuBWlwpvI3Cr/Se+7whJtwS4dd2K1wlx6xKKfxuavf0eqg3/emyroXILvAQGIPemT8DZOfcEKBYv+gNwvNHbUBX4oQHqA3CrBu4AJ73/0+ZA3GokTS+sSfWiGJoBWQAAAABJRU5ErkJggg=='
 const classPrefix = `jdtaro-popover`
 export const JDPopover: FunctionComponent<
   Partial<TaroPopoverProps> &
@@ -296,7 +298,7 @@ export const JDPopover: FunctionComponent<
             {...rest}
           >
             <View
-              className={`${classPrefix}-content-group`}
+              className={`${classPrefix}-content-group ${classPrefix}-content-group-${theme}`}
               id={popoverContentId}
               ref={popoverContentRef}
               style={{ ...(contentStyle || {}) }}
@@ -308,7 +310,7 @@ export const JDPopover: FunctionComponent<
                       width: '8px',
                       height: '4px',
                       backgroundSize: '100% 100%',
-                      backgroundImage: `url(${arrowIconBase64})`,
+                      backgroundImage: `url(${theme === 'dark' ? arrowIconDarkBase64 : arrowIconLightBase64})`,
                     }}
                   ></View>
                 </View>
