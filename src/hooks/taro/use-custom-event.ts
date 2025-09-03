@@ -1,29 +1,27 @@
+import Taro from '@tarojs/taro'
 import { useEffect, useRef } from 'react'
 import isEqual from 'react-fast-compare'
-import { Events, getCurrentInstance } from '@tarojs/taro'
 import { useForceUpdate } from '@/hooks/use-force-update'
-
-export const customEvents = new Events()
 
 export function useCustomEventsPath(selector?: string) {
   selector = selector || ''
-  const path = getCurrentInstance().router?.path
+  const path = Taro.getCurrentInstance().router?.path
   return path ? `${path}__${selector}` : selector
 }
 
 export function useCustomEvent(selector: string, cb: any) {
   const path = useCustomEventsPath(selector)
   useEffect(() => {
-    customEvents.on(path, cb)
+    Taro.eventCenter.on(path, cb)
     return () => {
-      customEvents.off(path)
+      Taro.eventCenter.off(path)
     }
   }, [])
   const trigger = <T = any>(args: T) => {
-    customEvents.trigger(path, args)
+    Taro.eventCenter.trigger(path, args)
   }
   const off = () => {
-    customEvents.off(path)
+    Taro.eventCenter.off(path)
   }
   return [trigger, off]
 }

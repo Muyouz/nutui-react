@@ -1,23 +1,23 @@
-import React, { FunctionComponent, useState, MouseEvent } from 'react'
+import { Close, Failure } from '@nutui/icons-react-taro'
+import { ITouchEvent, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import classNames from 'classnames'
+import React, { FunctionComponent, MouseEvent, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { View, ITouchEvent } from '@tarojs/components'
-import { Failure, Close } from '@nutui/icons-react-taro'
-import Button from '@/packages/button/index.taro'
-import { TaroDialogProps } from '@/types'
-import { Content, defaultContentProps } from './content.taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import Overlay from '@/packages/overlay/index.taro'
-import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import {
-  customEvents,
   useCustomEvent,
   useCustomEventsPath,
   useParams,
 } from '@/hooks/taro/use-custom-event'
 import { useLockScrollTaro } from '@/hooks/taro/use-lock-scoll'
+import Button from '@/packages/button/index.taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import Overlay from '@/packages/overlay/index.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
+import { TaroDialogProps } from '@/types'
 import { mergeProps } from '@/utils/merge-props'
 import { harmony } from '@/utils/taro/platform'
+import { Content, defaultContentProps } from './content.taro'
 
 const defaultProps = {
   ...defaultOverlayProps,
@@ -261,13 +261,13 @@ export const BaseDialog: FunctionComponent<Partial<TaroDialogProps>> & {
 export function open(selector: string, options: Partial<typeof defaultProps>) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: true, options })
+  Taro.eventCenter.trigger(path, { status: true, options })
 }
 
 export function close(selector: string) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: false })
+  Taro.eventCenter.trigger(path, { status: false })
 }
 
 BaseDialog.displayName = 'NutDialog'

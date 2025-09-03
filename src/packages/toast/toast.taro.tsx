@@ -1,21 +1,20 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
-import classNames from 'classnames'
-import { Text, View } from '@tarojs/components'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
-import Overlay from '@/packages/overlay/index.taro'
-import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
-
+import { Text, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import classNames from 'classnames'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import {
-  customEvents,
   useCustomEvent,
   useCustomEventsPath,
   useParams,
 } from '@/hooks/taro/use-custom-event'
 import { usePropsValue } from '@/hooks/use-props-value'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import { harmony } from '@/utils/taro/platform'
-import { mergeProps } from '@/utils/merge-props'
+import Overlay from '@/packages/overlay/index.taro'
+import { defaultOverlayProps } from '@/packages/overlay/overlay.taro'
 import { TaroToastProps } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
+import { harmony } from '@/utils/taro/platform'
 
 const defaultProps: TaroToastProps = {
   ...defaultOverlayProps,
@@ -198,13 +197,13 @@ export interface ToastOptions
 export function show(selector: string, options: ToastOptions) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: true, options })
+  Taro.eventCenter.trigger(path, { status: true, options })
 }
 
 export function hide(selector: string) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, { status: false })
+  Taro.eventCenter.trigger(path, { status: false })
 }
 
 Toast.displayName = 'NutToast'
