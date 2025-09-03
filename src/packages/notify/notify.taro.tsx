@@ -1,18 +1,18 @@
-import React, { useState, useEffect, FunctionComponent, useMemo } from 'react'
-import classNames from 'classnames'
-import { CSSTransition } from 'react-transition-group'
-import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
-import { web } from '@/utils/taro/platform'
-import { pxTransform } from '@/utils/taro/px-transform'
-import { ComponentDefaults } from '@/utils/typings'
+import { View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import classNames from 'classnames'
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
 import {
-  customEvents,
   useCustomEvent,
   useCustomEventsPath,
 } from '@/hooks/taro/use-custom-event'
-import { mergeProps } from '@/utils/merge-props'
 import { TaroNotifyProps } from '@/types'
+import { mergeProps } from '@/utils/merge-props'
+import { web } from '@/utils/taro/platform'
+import { pxTransform } from '@/utils/taro/px-transform'
+import { ComponentDefaults } from '@/utils/typings'
 
 const defaultProps = {
   ...ComponentDefaults,
@@ -153,13 +153,13 @@ export const Notify: FunctionComponent<Partial<TaroNotifyProps>> & {
 export function open(selector: string) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, true)
+  Taro.eventCenter.trigger(path, true)
 }
 
 export function close(selector: string) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const path = useCustomEventsPath(selector)
-  customEvents.trigger(path, false)
+  Taro.eventCenter.trigger(path, false)
 }
 
 Notify.displayName = 'NutNotify'
