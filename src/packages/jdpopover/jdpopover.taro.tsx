@@ -40,6 +40,7 @@ const defaultProps = {
   onOpen: () => {},
   onClose: () => {},
   useCachePosition: true,
+  contentStyle: {},
 }
 
 const arrowIconBase64 =
@@ -71,6 +72,7 @@ export const JDPopover: FunctionComponent<
     onSelect,
     areaOffset,
     useCachePosition,
+    contentStyle,
     ...rest
   } = {
     ...defaultProps,
@@ -295,6 +297,7 @@ export const JDPopover: FunctionComponent<
               className={`${classPrefix}-content-group`}
               id={popoverContentId}
               ref={popoverContentRef}
+              style={{ ...(contentStyle || {}) }}
             >
               {showArrow && (
                 <View className={popoverArrow()} style={popoverArrowStyle()}>

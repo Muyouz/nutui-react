@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { BaseProps } from '../../base/props'
 import { FullPosition, SimpleValues, UITheme } from '../../base/atoms'
+import { BaseProps } from '../../base/props'
 
 export interface PopoverList {
   key?: string
@@ -50,4 +50,5 @@ export type BasePopover<POPUP_PROPS> = POPUP_PROPS &
     onSelect: (item: PopoverList, index: number) => void
     areaOffset: number[] // [x, y] jdtaro-popover定位元素的偏移量，默认[0, 0]
     useCachePosition?: boolean // 是否缓存位置信息
+    contentStyle?: React.CSSProperties // 内容区样式
   }
