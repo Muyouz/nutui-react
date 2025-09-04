@@ -83,6 +83,7 @@ export const JDPopover: FunctionComponent<
 
   const popoverRef = useRef<HTMLDivElement>(null)
   const popoverContentRef = useRef<HTMLDivElement>(null)
+  const popoverContentRefForCalculate = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
   const [popWidth, setPopWidth] = useState(0)
   const [popHeight, setPopHeight] = useState(0)
@@ -90,21 +91,29 @@ export const JDPopover: FunctionComponent<
   const uid = useUuid()
   const popoverId = `jdtaro-popover-${uid}`
   const popoverContentId = `jdtaro-popover-content-${uid}`
+  const popoverContentIdForCalculate = `jdtaro-popover-content-${uid}-calculate`
 
   useEffect(() => {
     const getWrapperPosition = async () => {
       Taro.nextTick(async () => {
-        const rect = targetId
-          ? await getRectInMultiPlatform(
-              document.querySelector(`#${targetId}`),
-              targetId,
-              useCachePosition
-            )
-          : await getRectInMultiPlatform(
-              popoverRef.current,
-              popoverId,
-              useCachePosition
-            )
+        const [rect, rectContent] = await Promise.all([
+          targetId
+            ? await getRectInMultiPlatform(
+                document.querySelector(`#${targetId}`),
+                targetId,
+                useCachePosition
+              )
+            : await getRectInMultiPlatform(
+                popoverRef.current,
+                popoverId,
+                useCachePosition
+              ),
+          getRectInMultiPlatform(
+            popoverContentRefForCalculate.current,
+            popoverContentIdForCalculate,
+            useCachePosition
+          ),
+        ])
         const { width, height, right, left, top } = rect
         setWrapperPosition({
           width,
@@ -113,22 +122,10 @@ export const JDPopover: FunctionComponent<
           top,
           right: rtl ? left : right,
         })
-        getPopoverContentW()
-      })
-    }
-
-    const getPopoverContentW = async () => {
-      Taro.nextTick(async () => {
-        const rectContent = await getRectInMultiPlatform(
-          popoverContentRef.current,
-          popoverContentId,
-          useCachePosition
-        )
         setPopWidth(rectContent.width)
         setPopHeight(rectContent.height)
       })
     }
-
     setShowPopup(visible)
     if (visible) {
       getWrapperPosition()
@@ -136,7 +133,14 @@ export const JDPopover: FunctionComponent<
       // 不使用缓存位置信息时，关闭jdpopover时清空位置信息
       setWrapperPosition(undefined)
     }
-  }, [visible, targetId, rtl, popoverId, popoverContentId, useCachePosition])
+  }, [
+    visible,
+    targetId,
+    rtl,
+    popoverId,
+    useCachePosition,
+    popoverContentIdForCalculate,
+  ])
 
   const clickAway = (e: any) => {
     if (closeOnOutsideClick) {
@@ -288,6 +292,53 @@ export const JDPopover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </View>
       )}
+      <View id={`for-calculate-${uid}`} className={`${classPrefix}-calculate`}>
+        <View
+          className={`${classPrefix}-calculate-content-group ${classPrefix}-content-group-${theme}`}
+          id={popoverContentIdForCalculate}
+          ref={popoverContentRefForCalculate}
+          style={{ ...(contentStyle || {}) }}
+        >
+          {Array.isArray(children) ? children[1] : null}
+          {list.map((item, index) => {
+            return (
+              <View
+                className={classNames({
+                  [`${classPrefix}-item`]: true,
+                  [`${classPrefix}-item-disabled`]: item.disabled,
+                })}
+                style={{ ...(item?.style || {}) }}
+                key={item.key || index}
+                onClick={() => handleSelect(item, index)}
+              >
+                {item.icon && (
+                  <View
+                    className={`${classPrefix}-item-icon`}
+                    style={{ ...(item?.iconStyle || {}) }}
+                  >
+                    {item.icon}
+                  </View>
+                )}
+                <Text
+                  className={`${classPrefix}-item-name`}
+                  style={{ ...(item?.nameStyle || {}) }}
+                >
+                  {item.name}
+                </Text>
+                {item.action?.icon && (
+                  <View
+                    className={`${classPrefix}-item-action-icon`}
+                    onClick={(e) => item.action?.onClick?.(e)}
+                    style={{ ...(item?.action?.style || {}) }}
+                  >
+                    {item.action.icon}
+                  </View>
+                )}
+              </View>
+            )
+          })}
+        </View>
+      </View>
       {showPopup && wrapperPosition && (
         <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
           <Popup
