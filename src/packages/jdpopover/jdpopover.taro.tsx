@@ -339,6 +339,13 @@ export const JDPopover: FunctionComponent<
           })}
         </View>
       </View>
+      {showPopup && closeOnOutsideClick && (
+        <View
+          className={`${classPrefix}-content-bg`}
+          onClick={clickAway}
+          onTouchMove={clickAway}
+        />
+      )}
       {showPopup && wrapperPosition && (
         <View className={classes} style={{ ...getPopoverPosition(), ...style }}>
           <Popup
@@ -407,13 +414,6 @@ export const JDPopover: FunctionComponent<
             </View>
           </Popup>
         </View>
-      )}
-      {showPopup && closeOnOutsideClick && (
-        <View
-          className={`${classPrefix}-content-bg`}
-          onClick={clickAway}
-          onTouchMove={clickAway}
-        />
       )}
     </>
   )
