@@ -3,6 +3,7 @@
   position: fixed;
   display: inline-block;
   word-break: normal;
+  z-index: 1000;
 
   // 用于定位元素，不显示
   width: 1px;
@@ -73,6 +74,7 @@
     max-height: initial;
     overflow-y: initial;
     min-height: 0;
+    background-color: transparent;
 
     &-group {
       position: relative;
@@ -336,4 +338,27 @@
 .jdtrao-content-copy {
   position: absolute;
   top: -99999px;
+}
+
+// 用于定位元素，不显示
+.jdtaro-popover-calculate {
+  z-index: -999;
+  position: fixed;
+  display: inline-block;
+  word-break: normal;
+  width: 1px;
+  height: 1px;
+  background-color: transparent;
+  bottom: 0;
+  right: 0;
+
+  &-content-group {
+    position: relative;
+    padding: 8px $popover-padding;
+    border-radius: $popover-border-radius;
+    transform: translateX(100%) translateY(100%);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 }
