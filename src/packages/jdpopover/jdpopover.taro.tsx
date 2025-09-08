@@ -98,12 +98,12 @@ export const JDPopover: FunctionComponent<
       Taro.nextTick(async () => {
         const [rect, rectContent] = await Promise.all([
           targetId
-            ? await getRectInMultiPlatform(
+            ? getRectInMultiPlatform(
                 document.querySelector(`#${targetId}`),
                 targetId,
                 useCachePosition
               )
-            : await getRectInMultiPlatform(
+            : getRectInMultiPlatform(
                 popoverRef.current,
                 popoverId,
                 useCachePosition
