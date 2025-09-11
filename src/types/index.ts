@@ -154,6 +154,10 @@ export * from './spec/jdpopover/base'
 export * from './spec/jdpopover/h5'
 export * from './spec/jdpopover/taro'
 
+export * from './spec/jdtoast/base'
+export * from './spec/jdtoast/h5'
+export * from './spec/jdtoast/taro'
+
 export * from './spec/picker/base'
 export * from './spec/picker/h5'
 export * from './spec/picker/taro'
