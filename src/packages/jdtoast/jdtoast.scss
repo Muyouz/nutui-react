@@ -1,10 +1,10 @@
 @keyframes rotation {
   0% {
-    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -12,7 +12,7 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%) translateY(-50%);
   z-index: 1300;
   padding: 16px;
 
@@ -42,9 +42,14 @@
     z-index: 1300;
     background-color: rgba(0, 0, 0, 0);
   }
-  &-icon {
+  &-icon-normal {
     width: 20px;
     height: 20px;
+  }
+  &-icon-loading {
+    width: 24px;
+    height: 24px;
+    animation: rotation 1s linear infinite;
   }
   &-icon-wrapper {
     width: 20px;

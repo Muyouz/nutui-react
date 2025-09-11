@@ -1081,6 +1081,19 @@
           "v15": 1,
           "author": "VickyYe",
           "dd": true
+        },
+        {
+          "version": "3.0.0",
+          "name": "JDToast",
+          "type": "component",
+          "cName": "京东吐司",
+          "desc": "京东风格的轻提示组件",
+          "sort": 2,
+          "show": true,
+          "taro": true,
+          "v15": 1,
+          "author": "zhengyanan18",
+          "dd": true
         }
       ]
     },

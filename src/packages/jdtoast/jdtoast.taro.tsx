@@ -14,12 +14,15 @@ const defaultProps: TaroJdToastProps = {
   content: '',
   onClose: () => {},
 
+  iconStyle: {},
+  iconWrapperStyle: {},
   titleStyle: {},
   contentStyle: {},
   containerStyle: {},
   onClick: (e: any) => {},
   hasOverlay: true,
   onOverlayClick: (e: any) => {},
+  ifCloseOnOverlayClick: true,
 }
 
 const ICON_BASE64_MAP = {
@@ -50,6 +53,7 @@ export const JdToast: FunctionComponent<
     onClick,
     hasOverlay,
     onOverlayClick,
+    ifCloseOnOverlayClick,
   } = mergeProps(defaultProps, props)
   const classPrefix = 'jdtaro-toast'
   const timer = useRef<Timeout | null>(null)
@@ -114,7 +118,7 @@ export const JdToast: FunctionComponent<
   // 点击遮罩层关闭
   const handleOverlayClick = (e: any) => {
     onOverlayClick?.(e)
-    handleClose()
+    ifCloseOnOverlayClick && handleClose()
   }
 
   // 点击内容区域
@@ -131,16 +135,25 @@ export const JdToast: FunctionComponent<
       return null
     }
 
-    if (typeof icon === 'string' && icon in ICON_BASE64_MAP) {
-      const iconUrl = ICON_BASE64_MAP[icon as keyof typeof ICON_BASE64_MAP]
+    if (icon === 'tips') {
       return (
         <Image
-          src={iconUrl}
-          className={`${classPrefix}-icon`}
+          src={ICON_BASE64_MAP.tips}
+          className={`${classPrefix}-icon-normal`}
           style={iconStyle}
         />
       )
     }
+    if (icon === 'loading') {
+      return (
+        <Image
+          src={ICON_BASE64_MAP.loading}
+          className={`${classPrefix}-icon-loading`}
+          style={iconStyle}
+        />
+      )
+    }
+
     // 自定义icon
     return (
       <View className={`${classPrefix}-icon-wrapper`} style={iconWrapperStyle}>

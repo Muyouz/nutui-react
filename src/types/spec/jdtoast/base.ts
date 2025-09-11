@@ -20,4 +20,5 @@ export type BaseJdToast = {
   onClick?: (e: any) => void // 点击内容区
   hasOverlay?: boolean // 是否有遮罩层，默认有
   onOverlayClick?: (e: any) => void // 点击遮罩层
+  ifCloseOnOverlayClick?: boolean // 是否在点击遮罩层后关闭提示
 }
