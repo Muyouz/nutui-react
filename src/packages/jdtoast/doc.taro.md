@@ -1,13 +1,11 @@
-# Toast 吐司
+# JDToast 京东吐司
 
-用于轻提示。
-
-> 当前组件 Taro 环境暂不支持函数式调用，推荐使用 Taro.API 使用原生组件 https://taro-docs.jd.com/taro/docs/apis/ui/interaction/showToast
+用于轻提示的京东风格组件。
 
 ## 引入
 
 ```tsx
-import { Toast } from '@nutui/nutui-react-taro'
+import { JDToast } from '@nutui/nutui-react-taro'
 ```
 
 ## 基础用法
@@ -20,7 +18,7 @@ import { Toast } from '@nutui/nutui-react-taro'
 
 :::
 
-### 函数调用
+### 带标题的提示
 
 :::demo
 
@@ -36,7 +34,7 @@ import { Toast } from '@nutui/nutui-react-taro'
 
 :::
 
-### 自定义 Icon
+### 内置图标
 
 :::demo
 
@@ -44,7 +42,7 @@ import { Toast } from '@nutui/nutui-react-taro'
 
 :::
 
-### 换行截断方式
+### 自定义图标
 
 :::demo
 
@@ -52,50 +50,35 @@ import { Toast } from '@nutui/nutui-react-taro'
 
 :::
 
-## Toast
+## JDToast
 
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| content | 消息文本内容 | `string` \| `React.ReactNode` | `-` |
-| duration | 展示时长（秒），值为 0 时，toast 不会自动消失（loading类型默认为0） | `number` | `2` |
-| title | 标题 | `string` | `-` |
-| position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
-| contentClassName | 自定义内容区类名 | `string` | `-` |
-| contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
-| icon | 自定义图标，对应icon组件，支持图片链接 | `string` | `-` |
-| size | 文案尺寸，三选一 | `small` \| `base` \| `large` | `base` |
-| closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
-| lockScroll | 背景是否锁定 | `boolean` | `false` |
-| visible | 弹窗是否显示开关 | `boolean` | `false` |
-| wordBreak | 换行截断方式 | `normal \| break-all \| break-word ` | `break-all` |
-| onClose | 关闭时触发的事件 | `Function` | `null` |
+| visible | 是否显示 | `boolean` | `false` |
+| theme | 主题样式 | `light` \| `dark` | `light` |
+| duration | 展示时长（毫秒），值为 0 时，toast 不会自动消失 | `number` | `2000` |
+| icon | 图标，支持内置图标或自定义图标 | `'tips'` \| `'loading'` \| `ReactNode` | `null` |
+| title | 标题 | `string` \| `ReactNode` | `''` |
+| content | 内容 | `string` \| `ReactNode` | `''` |
+| onClose | 关闭时触发的事件 | `() => void` | `() => {}` |
+| iconStyle | 图标样式 | `CSSProperties` | `{}` |
+| iconWrapperStyle | 图标容器样式 | `CSSProperties` | `{}` |
+| titleStyle | 标题样式 | `CSSProperties` | `{}` |
+| contentStyle | 内容样式 | `CSSProperties` | `{}` |
+| containerStyle | 容器样式 | `CSSProperties` | `{}` |
+| overlayStyle | 遮罩层样式 | `CSSProperties` | `{}` |
+| onClick | 点击内容区域时触发 | `(e: any) => void` | `(e: any) => {}` |
+| hasOverlay | 是否有遮罩层 | `boolean` | `true` |
+| onOverlayClick | 点击遮罩层时触发 | `(e: any) => void` | `(e: any) => {}` |
+| ifCloseOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `true` |
 
-### Methods
+### 内置图标
 
-| 方法名 | 说明 | 类型 |
-| --- | --- | --- |
-| Toast.show | 打开 Toast | (id: string, options: ToastOptions) => void |
-| Toast.hide | 关闭 Toast | (id: string) => void |
+| 图标 | 说明 |
+| --- | --- |
+| `tips` | 提示图标 |
+| `loading` | 加载图标（带旋转动画） |
 
-ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, duration
-
-## 主题定制
-
-### 样式变量
-
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
-
-| 名称 | 说明 | 默认值 |
-| --- | --- | --- |
-| \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
-| \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
-| \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
-| \--nutui-toast-inner-top | `toast`内容区自定义高度 | `50%` |
-| \--nutui-toast-inner-padding | `toast`内容区padding值 | `13px 16px` |
-| \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
-| \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `$radius-xl` |
-| \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |
-
-<Contribution name="Toast" />
+<Contribution name="JDToast" />
