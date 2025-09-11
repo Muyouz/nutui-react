@@ -1,6 +1,12 @@
 import { Image, Text, View } from '@tarojs/components'
 import classNames from 'classnames'
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { TaroJdToastProps } from '@/types'
 import { Timeout } from '@/utils'
 import { mergeProps } from '@/utils/merge-props'
@@ -59,11 +65,42 @@ export const JdToast: FunctionComponent<
   const timer = useRef<Timeout | null>(null)
 
   const [innerVisible, setInnerVisible] = useState(visible)
+  const [animationClass, setAnimationClass] = useState('')
+
+  // 手动关闭函数
+  const handleClose = useCallback(() => {
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = null
+    }
+    // 先添加退出动画类
+    setAnimationClass('jdtaro-toast-fade-leave-active')
+    // 动画结束后隐藏元素
+    setTimeout(() => {
+      setInnerVisible(false)
+      setAnimationClass('')
+      onClose?.()
+    }, 300) // 与CSS动画时长保持一致
+  }, [onClose])
 
   // 当 visible 属性变化时，更新内部状态
   useEffect(() => {
-    setInnerVisible(visible)
-  }, [visible])
+    if (visible) {
+      setInnerVisible(true)
+      // 延迟添加进入动画类，确保元素已渲染
+      setTimeout(() => {
+        setAnimationClass('jdtaro-toast-fade-enter-active')
+      }, 10)
+    } else if (innerVisible) {
+      // 只有在当前可见时才执行退出动画
+      setAnimationClass('jdtaro-toast-fade-leave-active')
+      // 动画结束后隐藏元素
+      setTimeout(() => {
+        setInnerVisible(false)
+        setAnimationClass('')
+      }, 300) // 与CSS动画时长保持一致
+    }
+  }, [visible, innerVisible])
 
   // 组件卸载时清理定时器
   useEffect(() => {
@@ -85,8 +122,7 @@ export const JdToast: FunctionComponent<
 
       // 设置新的定时器
       timer.current = setTimeout(() => {
-        setInnerVisible(false)
-        onClose?.()
+        handleClose()
       }, duration)
     } else if (innerVisible && duration === 0) {
       // duration 为 0 时，清除可能存在的定时器，但不自动关闭
@@ -103,17 +139,7 @@ export const JdToast: FunctionComponent<
         timer.current = null
       }
     }
-  }, [innerVisible, duration])
-
-  // 手动关闭函数
-  const handleClose = () => {
-    if (timer.current) {
-      clearTimeout(timer.current)
-      timer.current = null
-    }
-    setInnerVisible(false)
-    onClose?.()
-  }
+  }, [innerVisible, duration, handleClose])
 
   // 点击遮罩层关闭
   const handleOverlayClick = (e: any) => {
@@ -215,7 +241,7 @@ export const JdToast: FunctionComponent<
           />
         )}
         <View
-          className={`${classPrefix} ${classPrefix}-${theme}`}
+          className={`${classPrefix} ${classPrefix}-${theme} ${animationClass}`}
           style={containerStyle}
           onClick={handleClick}
         >
