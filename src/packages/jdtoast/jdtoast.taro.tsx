@@ -129,6 +129,7 @@ export const JdToast: FunctionComponent<
   const hasIcon = icon != null && icon !== ''
   const hasTitle = title != null && title !== ''
   const hasContent = content != null && content !== ''
+  const isOnlyContent = !hasTitle && !hasIcon && hasContent
 
   const renderIcon = () => {
     if (!hasIcon) {
@@ -203,6 +204,13 @@ export const JdToast: FunctionComponent<
     return content
   }
 
+  const containerClasses = classNames(
+    `${classPrefix}`,
+    `${classPrefix}-${theme}`,
+    {
+      [`${classPrefix}-only-content`]: isOnlyContent,
+    }
+  )
   return (
     innerVisible && (
       <>
@@ -215,7 +223,7 @@ export const JdToast: FunctionComponent<
           />
         )}
         <View
-          className={`${classPrefix} ${classPrefix}-${theme}`}
+          className={containerClasses}
           style={containerStyle}
           onClick={handleClick}
         >
