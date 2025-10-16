@@ -42,7 +42,9 @@ export const getRectInMultiPlatform = async (
         resolve(lru.get(element) as Rect)
         return
       }
+      const dom = document.querySelector('#'.concat(harmonyId || element.uid))
       Taro.createSelectorQuery()
+        .in(dom as any)
         .select(`#${harmonyId || element.uid}`)
         .boundingClientRect()
         .exec(([rects]) => {
